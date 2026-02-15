@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="480" viewBox="0 0 360 480">
+  <rect x="12" y="12" width="336" height="456" rx="16" fill="#f3f3f3" stroke="#d8d8d8" stroke-width="2"/>
+  <rect x="28" y="28" width="304" height="424" rx="12" fill="#ffffff" stroke="#e6e6e6" stroke-width="2"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#7a7a7a">Book Cover</text>
+  <text x="50%" y="54%" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#a0a0a0">Replace with actual image</text>
+</svg>

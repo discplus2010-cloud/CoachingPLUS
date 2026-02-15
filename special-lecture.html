@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>특강 - 코칭플러스</title>
+    <meta name="description" content="일반 기업 대상 특강과 간략화된 코칭을 안내합니다.">
+    <meta name="theme-color" content="#3e2c50">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <style>
+        .lecture-summary {
+            max-width: 820px;
+            margin: 40px auto 30px;
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 1.8;
+            background: var(--bg-surface);
+            border-radius: 8px;
+            padding: 36px 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .lecture-summary h2 {
+            font-size: 24px;
+            color: var(--brand-standard);
+            margin-bottom: 12px;
+        }
+
+        .lecture-grid {
+            max-width: 980px;
+            margin: 0 auto 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .lecture-card {
+            background: var(--bg-surface);
+            border-radius: 8px;
+            padding: 22px;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .lecture-card h3 {
+            font-size: 16px;
+            color: var(--brand-standard);
+            margin-bottom: 8px;
+        }
+
+        .lecture-card p,
+        .lecture-card li {
+            color: var(--text-body);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .lecture-card ul {
+            list-style: none;
+            display: grid;
+            gap: 6px;
+        }
+
+        .lecture-card li {
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .lecture-card li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--text-light);
+        }
+
+        .lecture-cta {
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--text-body);
+        }
+
+        .lecture-cta p {
+            margin-bottom: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .lecture-summary {
+                padding: 28px;
+            }
+
+            .lecture-grid {
+                margin: 0 auto 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 & 내비게이션 -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>
+                    <a href="./index.html">
+                        <img class="logo-main" src="./assets/images/logo-main.png" alt="CoachingPLUS 코칭플러스 로고">
+                        <img class="logo-symbol" src="./assets/images/logo-symbol.png" alt="CoachingPLUS 코칭플러스 로고">
+                    </a>
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./about.html">소개</a></li>
+                    <li><a href="./coaching-model.html">코칭 모델</a></li>
+                    <li><a href="./programs.html">프로그램</a></li>
+                    <li><a href="./special-lecture.html">특강</a></li>
+                    <li><a href="./book.html">도서</a></li>
+                    <li><a href="./contact.html">문의</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main>
+        <div class="page-header">
+            <h1>특강</h1>
+            <p>일반 기업 대상 간략화 코칭 특강을 안내합니다.</p>
+        </div>
+
+        <section class="lecture-summary">
+            <h2>특강 개요</h2>
+            <p>일반 기업을 대상으로, 현장 상황에 맞게 간략화된 코칭 특강을 제공합니다.</p>
+            <p>짧은 시간 안에 핵심 개념과 실무 적용 포인트를 정리하는 구성을 지향합니다.</p>
+        </section>
+
+        <section class="lecture-grid" aria-label="특강 구성">
+            <div class="lecture-card">
+                <h3>대상</h3>
+                <p>일반 기업의 팀/리더/구성원</p>
+            </div>
+            <div class="lecture-card">
+                <h3>주요 주제</h3>
+                <ul>
+                    <li>리더십</li>
+                    <li>팀워킹</li>
+                </ul>
+            </div>
+            <div class="lecture-card">
+                <h3>진행 방식</h3>
+                <p>강의 + 간단한 실습/토의 중심으로 구성합니다.</p>
+            </div>
+            <div class="lecture-card">
+                <h3>기대 효과</h3>
+                <p>조직의 소통 기준을 정리하고 협업의 기준점을 마련합니다.</p>
+            </div>
+        </section>
+
+        <section class="lecture-cta">
+            <p>세부 일정과 구성은 협의를 통해 조정합니다.</p>
+            <a class="btn btn-primary" href="./contact.html">문의하기</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>연락처</h3>
+                <p>전화: 02-1234-5678<br>이메일: info@coachingplus.kr</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>사업자정보</h3>
+                <p>사업자등록번호: 123-45-67890<br>대표: 김코칭<br>통신판매신고: 2026-서울강남-0123</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 코칭플러스. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+

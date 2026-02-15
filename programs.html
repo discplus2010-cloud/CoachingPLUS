@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로그램 - 코칭플러스</title>
+    <meta name="description" content="간호사와 병원을 위한 코칭 프로그램을 안내합니다.">
+    <meta name="theme-color" content="#3e2c50">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <style>
+        .programs-intro {
+            max-width: 800px;
+            margin: 40px auto 30px;
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .programs-accordion {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .programs-accordion summary {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .programs-accordion .summary-text {
+            display: grid;
+            gap: 6px;
+        }
+
+        .programs-accordion .summary-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--brand-standard);
+        }
+
+        .programs-accordion .summary-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .programs-accordion .program-body {
+            display: grid;
+            gap: 12px;
+            padding: 16px 20px 20px;
+            color: var(--text-body);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .programs-accordion .program-body h3 {
+            font-size: 15px;
+            color: var(--brand-standard);
+        }
+
+        .programs-accordion .program-body ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+
+        .programs-accordion .program-body li {
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .programs-accordion .program-body li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .programs-intro {
+                margin: 30px 0 20px;
+                font-size: 15px;
+            }
+
+            .programs-accordion summary {
+                padding: 18px 18px;
+            }
+
+            .programs-accordion .summary-title {
+                font-size: 16px;
+            }
+
+            .programs-accordion .summary-desc {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 & 내비게이션 -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>
+                    <a href="./index.html">
+                        <img class="logo-main" src="./assets/images/logo-main.png" alt="CoachingPLUS 코칭플러스 로고">
+                        <img class="logo-symbol" src="./assets/images/logo-symbol.png" alt="CoachingPLUS 코칭플러스 로고">
+                    </a>
+                </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./about.html">소개</a></li>
+                    <li><a href="./coaching-model.html">코칭 모델</a></li>
+                    <li><a href="./programs.html">프로그램</a></li>
+                    <li><a href="./special-lecture.html">특강</a></li>
+                    <li><a href="./book.html">도서</a></li>
+                    <li><a href="./contact.html">문의</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main>
+        <div class="page-header">
+            <h1>프로그램</h1>
+            <p>현장에 맞는 실무형 코칭을 제공합니다.</p>
+        </div>
+
+        <p class="programs-intro">
+            현재는 간호사/병원(의료기관)을 중심으로 2가지 프로그램을 운영하고 있습니다.
+        </p>
+
+        <section class="programs-accordion" aria-label="프로그램 목록">
+            <details class="program-card">
+                <summary>
+                    <span class="summary-text">
+                        <span class="summary-title">간호사 회복력 코칭</span>
+                        <span class="summary-desc">스트레스 관리와 회복 루틴을 정리하는 프로그램</span>
+                    </span>
+                </summary>
+                <div class="program-body">
+                    <div>
+                        <h3>대상</h3>
+                        <p>간호사</p>
+                    </div>
+                    <div>
+                        <h3>적합한 고민/상황</h3>
+                        <ul>
+                            <li>교대 근무로 컨디션 관리가 어려운 경우</li>
+                            <li>업무 스트레스가 지속되는 경우</li>
+                            <li>회복 루틴을 만들고 싶은 경우</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>진행 방식</h3>
+                        <p>1:1 또는 소그룹, 회차/시간은 협의(예: 주 1회, 회당 60분)</p>
+                    </div>
+                    <div>
+                        <h3>기대 효과</h3>
+                        <p>업무 컨디션을 점검하고, 지속 가능한 회복 습관을 정리합니다.</p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="program-card">
+                <summary>
+                    <span class="summary-text">
+                        <span class="summary-title">병원 팀 커뮤니케이션 코칭</span>
+                        <span class="summary-desc">협업 방식과 소통 규칙을 정리하는 프로그램</span>
+                    </span>
+                </summary>
+                <div class="program-body">
+                    <div>
+                        <h3>대상</h3>
+                        <p>병원(의료기관)</p>
+                    </div>
+                    <div>
+                        <h3>적합한 고민/상황</h3>
+                        <ul>
+                            <li>부서 간 협업이 원활하지 않은 경우</li>
+                            <li>업무 인수인계에서 누락이 반복되는 경우</li>
+                            <li>팀 내 소통 규칙이 필요한 경우</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>진행 방식</h3>
+                        <p>팀 단위 워크숍, 일정과 회차는 협의(예: 격주 1회, 90분)</p>
+                    </div>
+                    <div>
+                        <h3>기대 효과</h3>
+                        <p>팀의 소통 기준을 정리하고 협업 효율을 높입니다.</p>
+                    </div>
+                </div>
+            </details>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>연락처</h3>
+                <p>전화: 02-1234-5678<br>이메일: info@coachingplus.kr</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>사업자정보</h3>
+                <p>사업자등록번호: 123-45-67890<br>대표: 김코칭<br>통신판매신고: 2026-서울강남-0123</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 코칭플러스. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
