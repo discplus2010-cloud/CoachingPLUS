@@ -1447,11 +1447,18 @@ a.course-tag:hover {
     line-height: 1.7;
 }
 
+.coach-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    margin-top: 1.1rem;
+}
+
 .coach-card {
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
-    margin-top: 1.1rem;
+    margin-top: 0;
 }
 
 .coach-img {
@@ -1459,10 +1466,17 @@ a.course-tag:hover {
     height: 96px;
     border-radius: 50%;
     background: var(--bg-soft);
-    background-image: url('/images/facilitator.jpg');
     background-size: cover;
     background-position: center;
     flex-shrink: 0;
+}
+
+.coach-img--jung {
+    background-image: url('../images/정일진.jpg');
+}
+
+.coach-img--park {
+    background-image: url('../images/박민아.jpg');
 }
 
 .coach-name {
@@ -1582,7 +1596,7 @@ a.course-tag:hover {
             font-weight: 700;
             color: var(--text-muted);
             background: var(--bg-surface);
-            border: 1.5px solid var(--border-light);
+            border: 1.5px solid #c93667;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
@@ -1593,7 +1607,7 @@ a.course-tag:hover {
         .prog-tab-btn .tab-sub {
             display: block;
             margin-top: 2px;
-            font-size: 0.82rem;
+            font-size: 0.94rem;
             font-weight: 400;
             color: var(--text-muted);
         }
@@ -1672,7 +1686,7 @@ a.course-tag:hover {
             padding: 4px 12px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.12);
-            font-size: 0.86rem;
+            font-size: 0.98rem;
         }
 
         .for-who,
@@ -1908,42 +1922,6 @@ a.course-tag:hover {
             font-weight: 700;
         }
 
-        .apply-banner {
-            margin-top: 1rem;
-            background: var(--brand-standard);
-            border-radius: 8px;
-            padding: 1.08rem 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-        }
-
-        .apply-banner-title {
-            font-size: 1.08rem;
-            font-weight: 700;
-            color: var(--text-white);
-        }
-
-        .apply-banner-desc {
-            margin-top: 3px;
-            font-size: 0.94rem;
-            color: var(--text-white);
-            opacity: 0.75;
-            line-height: 1.5;
-        }
-
-        .apply-btn {
-            flex-shrink: 0;
-            background: var(--text-white);
-            color: var(--brand-standard);
-            border-radius: 6px;
-            padding: 0.58rem 1.08rem;
-            font-size: 0.96rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
         .sub-prog-selector {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2024,11 +2002,6 @@ a.course-tag:hover {
             background: #e8f2ee;
         }
 
-        .part-card--beige,
-        .part-header--beige {
-            background: #f2ede0;
-        }
-
         .part-badge {
             font-size: 0.82rem;
             color: var(--brand-standard);
@@ -2093,13 +2066,13 @@ a.course-tag:hover {
         }
 
         .session-label {
-            font-size: 0.72rem;
+            font-size: 0.84rem;
             color: var(--text-muted);
         }
 
         .session-title {
             margin-bottom: 3px;
-            font-size: 1.08rem;
+            font-size: 1.18rem;
             font-weight: 700;
             color: var(--text-black);
         }
@@ -2113,7 +2086,7 @@ a.course-tag:hover {
 
         .session-desc {
             margin-bottom: 8px;
-            font-size: 1rem;
+            font-size: 1.08rem;
             color: var(--text-body);
             line-height: 1.65;
         }
@@ -2125,7 +2098,7 @@ a.course-tag:hover {
         }
 
         .stag {
-            font-size: 0.82rem;
+            font-size: 0.94rem;
             padding: 5px 10px;
             border-radius: 20px;
             background: var(--bg-soft);
@@ -2158,8 +2131,7 @@ a.course-tag:hover {
                 grid-template-columns: 1fr;
             }
 
-            .info-row,
-            .apply-banner {
+            .info-row {
                 flex-direction: column;
                 align-items: stretch;
             }
@@ -2168,4 +2140,644 @@ a.course-tag:hover {
                 width: 100%;
             }
         }
+
+/* Programs page refresh */
+.prog-panel .section-label {
+    margin-bottom: 4px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--brand-standard);
+    letter-spacing: 0.08em;
+}
+
+.prog-tab-btn {
+    font-size: 1.08rem;
+}
+
+.prog-tab-btn .tab-title {
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.35;
+}
+
+.prog-tab-btn[data-panel="discplus"] .tab-title,
+.brand-word {
+    color: var(--brand-standard);
+    font-weight: 700;
+}
+
+.prog-tab-btn .tab-sub {
+    font-size: 0.98rem;
+}
+
+.prog-panel .prog-badge {
+    font-size: 0.96rem;
+}
+
+.prog-panel .prog-hero p {
+    font-size: 1.12rem;
+}
+
+.prog-panel .info-label {
+    font-size: 1.02rem;
+}
+
+.prog-panel .info-value {
+    font-size: 1.08rem;
+}
+
+.prog-panel .session-num {
+    font-size: 0.92rem;
+}
+
+.prog-panel .session-label {
+    font-size: 0.86rem;
+}
+
+.prog-panel .session-title {
+    font-size: 1.2rem;
+}
+
+.prog-panel .session-desc {
+    font-size: 1.1rem;
+}
+
+.prog-panel .stag {
+    font-size: 0.96rem;
+}
+
+.prog-panel .section-title {
+    font-size: 1.62rem;
+    font-weight: 700;
+    color: var(--text-black);
+    line-height: 1.45;
+}
+
+.discplus-target {
+    margin-bottom: 1.35rem;
+}
+
+.prog-panel .sub-prog-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.prog-panel .sub-card {
+    flex: 1;
+    border: 2px solid #c93667;
+    background: var(--bg-surface);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.prog-panel .sub-card:hover {
+    background: #EEEDFE;
+    border-color: #3e2c50;
+}
+
+.prog-panel .sub-card.active {
+    background: var(--brand-dark);
+    border-color: var(--brand-standard);
+    border-width: 3px;
+    box-shadow: none;
+}
+
+.prog-panel .sub-badge {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #c93667;
+    letter-spacing: 0.05em;
+}
+
+.prog-panel .sub-card.active .sub-badge {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.prog-panel .sub-card:hover .sub-badge {
+    color: #3e2c50;
+}
+
+.prog-panel .sub-title {
+    margin-bottom: 3px;
+    font-size: 1.14rem;
+    font-weight: 500;
+    color: var(--text-black);
+}
+
+.prog-panel .sub-card.active .sub-title {
+    color: var(--text-white);
+}
+
+.prog-panel .sub-card.active .brand-word {
+    color: var(--text-white);
+}
+
+.prog-panel .sub-desc {
+    margin-top: 0;
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.prog-panel .sub-card.active .sub-desc {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.prog-summary {
+    margin-bottom: 2rem;
+    padding: 1rem 0 1.5rem;
+    border-bottom: 0.5px solid var(--border-light);
+    color: var(--text-body);
+    font-size: 1.24rem;
+    line-height: 1.8;
+}
+
+.prog-section {
+    margin-bottom: 2rem;
+}
+
+.target-list {
+    margin-top: 0.75rem;
+    border-top: 0.5px solid var(--border-light);
+    list-style: none;
+}
+
+.target-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid var(--border-light);
+}
+
+.target-item:last-child {
+    border-bottom: none;
+}
+
+.target-dot {
+    width: 6px;
+    height: 6px;
+    margin-top: 8px;
+    border-radius: 50%;
+    background: #7B2D6E;
+    flex-shrink: 0;
+}
+
+.target-title {
+    margin-bottom: 3px;
+    color: var(--text-black);
+    font-size: 1.22rem;
+    font-weight: 500;
+}
+
+.target-desc {
+    color: var(--text-body);
+    font-size: 1.12rem;
+    line-height: 1.65;
+}
+
+.feat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-top: 0.75rem;
+    overflow: hidden;
+    border: 0.5px solid var(--border-light);
+    border-radius: 8px;
+    background: var(--border-light);
+}
+
+.feat-item {
+    background: var(--bg-surface);
+    padding: 1rem 1.2rem;
+}
+
+.feat-title {
+    margin-bottom: 4px;
+    color: var(--text-black);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.feat-desc {
+    color: var(--text-body);
+    font-size: 1.12rem;
+    line-height: 1.65;
+}
+
+.prog-panel .model-list {
+    padding: 0;
+    background: transparent;
+}
+
+.prog-panel .model-card {
+    padding: 1rem 0;
+}
+
+.prog-panel .model-role-tag {
+    background: transparent;
+    color: #3C3489;
+    border: 1px solid #AFA9EC;
+    font-size: 1rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.part-header--teal {
+    background: #E1F5EE;
+    color: #085041;
+}
+
+.part-header--navy {
+    background: #E6F1FB;
+    color: var(--text-black);
+}
+
+.part-header--purple {
+    background: #EEEDFE;
+    color: #3C3489;
+}
+
+.part-card--teal {
+    background: #E1F5EE;
+}
+
+.part-card--navy {
+    background: #E6F1FB;
+}
+
+.part-card--purple {
+    background: #EEEDFE;
+}
+
+@media (max-width: 640px) {
+    .feat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prog-panel .sub-prog-selector {
+        flex-direction: column;
+    }
+}
+
+/* Programs connected content tabs */
+#panel-discplus {
+    --program-accent-bg: #E1F5EE;
+    --program-accent-soft: #F4FCF9;
+    --program-accent-border: #9FE1CB;
+    --program-accent-strong: #5DCAA5;
+    --program-accent-text: #085041;
+}
+
+#panel-nursing {
+    --program-accent-bg: #E6F1FB;
+    --program-accent-soft: #F5FAFE;
+    --program-accent-border: #B5D4F4;
+    --program-accent-strong: #85B7EB;
+    --program-accent-text: #0C447C;
+}
+
+#panel-coaching {
+    --program-accent-bg: #EEEDFE;
+    --program-accent-soft: #F7F6FF;
+    --program-accent-border: #CECBF6;
+    --program-accent-strong: #AFA9EC;
+    --program-accent-text: #3C3489;
+}
+
+.prog-tabs {
+    gap: 12px;
+    align-items: stretch;
+}
+
+.prog-tab-btn {
+    position: relative;
+    z-index: 2;
+    border: 2px solid var(--border-light);
+    border-radius: 10px;
+    background: var(--bg-soft);
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.prog-tab-btn + .prog-tab-btn {
+    margin-left: 0;
+}
+
+.prog-tab-btn:first-child {
+    border-radius: 10px;
+}
+
+.prog-tab-btn:last-child {
+    border-radius: 10px;
+}
+
+.prog-tab-btn.active {
+    z-index: 3;
+    color: var(--text-black);
+    border-width: 2px;
+    box-shadow: none;
+}
+
+.prog-tab-btn.active .tab-sub {
+    color: inherit;
+    opacity: 0.82;
+}
+
+.prog-tab-btn[data-panel="discplus"] {
+    background: #F4FCF9;
+    border-color: #9FE1CB;
+}
+
+.prog-tab-btn[data-panel="nursing"] {
+    background: #F5FAFE;
+    border-color: #B5D4F4;
+}
+
+.prog-tab-btn[data-panel="coaching"] {
+    background: #F7F6FF;
+    border-color: #CECBF6;
+}
+
+.prog-tab-btn[data-panel="discplus"] .tab-title,
+.prog-tab-btn[data-panel="discplus"] .tab-sub {
+    color: #085041;
+}
+
+.prog-tab-btn[data-panel="nursing"] .tab-title,
+.prog-tab-btn[data-panel="nursing"] .tab-sub {
+    color: #0C447C;
+}
+
+.prog-tab-btn[data-panel="coaching"] .tab-title,
+.prog-tab-btn[data-panel="coaching"] .tab-sub {
+    color: #3C3489;
+}
+
+.prog-tab-btn[data-panel="discplus"].active {
+    background: #E1F5EE;
+    border-color: #5DCAA5;
+}
+
+.prog-tab-btn[data-panel="nursing"].active {
+    background: #E6F1FB;
+    border-color: #85B7EB;
+}
+
+.prog-tab-btn[data-panel="coaching"].active {
+    background: #EEEDFE;
+    border-color: #AFA9EC;
+}
+
+.prog-tab-btn[data-panel="discplus"]:not(.active):hover {
+    background: #E1F5EE;
+    border-color: #5DCAA5;
+}
+
+.prog-tab-btn[data-panel="nursing"]:not(.active):hover {
+    background: #E6F1FB;
+    border-color: #85B7EB;
+}
+
+.prog-tab-btn[data-panel="coaching"]:not(.active):hover {
+    background: #EEEDFE;
+    border-color: #AFA9EC;
+}
+
+.prog-panel.active .prog-inner {
+    padding-top: 0;
+}
+
+.top-tab-content {
+    margin-top: 12px;
+    margin-bottom: 1.6rem;
+    padding: 0;
+    background: var(--bg-surface);
+    border: 2px solid var(--program-accent-border);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+#panel-discplus .top-tab-content {
+    background: var(--bg-surface);
+}
+
+#panel-nursing .top-tab-content {
+    background: var(--bg-surface);
+}
+
+#panel-coaching .top-tab-content {
+    background: var(--bg-surface);
+}
+
+.top-panel-head {
+    padding: 1.8rem 1.8rem 1.35rem;
+    background: var(--program-accent-bg);
+    border-bottom: 1px solid var(--program-accent-border);
+}
+
+#panel-discplus .top-panel-head {
+    background: var(--program-accent-bg);
+}
+
+#panel-nursing .top-panel-head {
+    background: var(--program-accent-bg);
+}
+
+#panel-coaching .top-panel-head {
+    background: var(--program-accent-bg);
+}
+
+.top-panel-body {
+    padding: 1.35rem 1.8rem 1.8rem;
+    background: var(--bg-surface);
+}
+
+.top-panel-intro {
+    margin: 0;
+}
+
+.top-tab-title {
+    margin: 0;
+    font-size: 1.62rem;
+    font-weight: 700;
+    color: var(--program-accent-text);
+    line-height: 1.45;
+}
+
+.top-tab-desc {
+    margin: 0;
+    font-size: 1.14rem;
+    color: var(--text-black);
+    line-height: 1.75;
+}
+
+.top-tab-content .target-title,
+.top-tab-content .target-desc {
+    color: var(--text-black);
+}
+
+.prog-panel .target-dot {
+    background: var(--program-accent-text);
+}
+
+.top-tab-content .section-label {
+    color: var(--program-accent-text);
+}
+
+.top-tab-content .target-list {
+    margin-top: 0.75rem;
+    border-top-color: var(--program-accent-border);
+}
+
+.top-tab-content .target-item {
+    border-bottom-color: var(--program-accent-border);
+}
+
+.top-tab-content .target-item:last-child {
+    border-bottom: none;
+}
+
+.top-tab-content .meta-pill {
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(51, 51, 51, 0.16);
+    color: var(--text-black);
+}
+
+.top-tab-content .prog-section,
+.top-tab-content .prog-hero {
+    margin-bottom: 0;
+}
+
+.prog-panel .sub-prog-selector {
+    gap: 12px;
+    align-items: stretch;
+    margin-bottom: 1rem;
+}
+
+.prog-panel .sub-card {
+    position: relative;
+    border: 2px solid var(--program-accent-border);
+    border-radius: 10px;
+    background: var(--program-accent-soft);
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.prog-panel .sub-card:hover {
+    background: var(--program-accent-bg);
+    border-color: var(--program-accent-strong);
+}
+
+.prog-panel .sub-card + .sub-card {
+    margin-left: 0;
+}
+
+.prog-panel .sub-card:first-child {
+    border-radius: 10px;
+}
+
+.prog-panel .sub-card:last-child {
+    border-radius: 10px;
+}
+
+.prog-panel .sub-card.active {
+    z-index: 2;
+    background: var(--program-accent-bg);
+    border-color: var(--program-accent-strong);
+    border-width: 2px;
+}
+
+.prog-panel .sub-badge,
+.prog-panel .sub-card.active .sub-badge,
+.prog-panel .sub-card:hover .sub-badge,
+.prog-panel .brand-word,
+.prog-panel .sub-card.active .brand-word,
+.prog-panel .sub-card.active .sub-title {
+    color: var(--program-accent-text);
+}
+
+.prog-panel .sub-card.active .sub-desc {
+    color: var(--text-black);
+}
+
+.prog-panel .sub-detail.active > .prog-hero:first-child {
+    margin-top: 1rem;
+    border: 2px solid var(--program-accent-border);
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .prog-tab-btn + .prog-tab-btn {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .prog-tab-btn:first-child {
+        border-radius: 10px;
+    }
+
+    .prog-tab-btn:last-child {
+        border-radius: 10px;
+    }
+
+    .prog-tab-btn[data-panel="discplus"].active {
+        border-bottom-color: #5DCAA5;
+    }
+
+    .prog-tab-btn[data-panel="nursing"].active {
+        border-bottom-color: #85B7EB;
+    }
+
+    .prog-tab-btn[data-panel="coaching"].active {
+        border-bottom-color: #AFA9EC;
+    }
+
+    .prog-panel.active .prog-inner {
+        padding-top: 0;
+    }
+
+    .top-tab-content {
+        margin-top: 12px;
+        padding: 0;
+    }
+
+    .top-panel-head {
+        padding: 1.35rem 1.25rem 1.1rem;
+    }
+
+    .top-panel-body {
+        padding: 1.15rem 1.25rem 1.35rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .prog-panel .sub-card + .sub-card {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .prog-panel .sub-card:first-child {
+        border-radius: 10px;
+    }
+
+    .prog-panel .sub-card:last-child {
+        border-radius: 10px;
+    }
+}
 
