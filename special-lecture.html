@@ -1,12 +1,222 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>특강 - 코칭플러스</title>
-    <meta name="description" content="일반 기업 대상 특강과 간략화된 코칭을 안내합니다.">
+    <meta name="description" content="조직과 구성원에 맞게 커스터마이징되는 코칭플러스 특강을 안내합니다.">
     <meta name="theme-color" content="#3e2c50">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .lecture-page-header {
+            background: var(--brand-dark);
+            background-image: linear-gradient(120deg, rgba(51, 36, 68, 0.72), rgba(47, 34, 71, 0.5)), url('./assets/images/lecture-hero-temp.svg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin: 40px 0 0;
+            overflow: hidden;
+        }
+
+        .lecture-hero-inner {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .lecture-page-header h1 {
+            font-size: 2.7rem;
+            font-weight: 700;
+            color: var(--text-white);
+            line-height: 1.35;
+        }
+
+        .lecture-page-header p {
+            margin-top: 6px;
+            font-size: 1.25rem;
+            color: var(--text-white);
+            opacity: 1;
+            letter-spacing: 0.04em;
+        }
+
+        .lecture-filter-section {
+            background: var(--bg-page);
+            padding: 2.2rem 2rem 0;
+        }
+
+        .filter-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+
+        .filter-btn {
+            padding: 0.56rem 1.08rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-surface);
+            border: 1.5px solid var(--border-light);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: var(--brand-standard);
+            color: var(--text-white);
+            border-color: var(--brand-standard);
+        }
+
+        .filter-btn:not(.active):hover {
+            background: #f0ecf5;
+            border-color: #b09ec0;
+            color: var(--brand-standard);
+        }
+
+        .lecture-categories {
+            background: var(--bg-page);
+            padding: 1.35rem 2rem 4rem;
+        }
+
+        .lecture-inner {
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+
+        .lecture-category {
+            margin-bottom: 2rem;
+        }
+
+        .lecture-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .category-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        .category-title {
+            font-size: 1.28rem;
+            font-weight: 700;
+            color: var(--text-black);
+        }
+
+        .category-desc {
+            margin-top: 2px;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .lecture-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .lcard {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            border-top: 3px solid var(--brand-standard);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lcard-badge {
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            background: var(--bg-soft);
+            color: var(--brand-standard);
+            display: inline-block;
+            align-self: flex-start;
+            border: 1px solid var(--border-light);
+        }
+
+        .lcard-title {
+            font-size: 1.28rem;
+            font-weight: 700;
+            color: var(--text-black);
+            line-height: 1.35;
+        }
+
+        .lcard-quote {
+            font-size: 0.96rem;
+            color: var(--brand-standard);
+            font-style: italic;
+            line-height: 1.6;
+            border-left: 2px solid var(--brand-standard);
+            padding-left: 8px;
+            margin: 0;
+        }
+
+        .lcard-desc {
+            font-size: 1.02rem;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        .lcard-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 2px;
+        }
+
+        .ltag {
+            font-size: 0.86rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: var(--bg-soft);
+            color: var(--text-muted);
+            border: 1px solid var(--border-light);
+        }
+
+        @media (max-width: 600px) {
+            .lecture-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lecture-hero-inner {
+                padding: 2.6rem 1.3rem;
+            }
+
+            .lecture-page-header h1 {
+                font-size: 2rem;
+            }
+
+            .lecture-filter-section,
+            .lecture-categories {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- 헤더 & 내비게이션 -->
@@ -32,123 +242,156 @@
         </div>
     </header>
 
-    <!-- 메인 콘텐츠 -->
     <main>
         <section class="lecture-page-header" aria-labelledby="lecture-page-title">
-            <h1 id="lecture-page-title">특강</h1>
-            <p>Special Lectures</p>
+            <div class="lecture-hero-inner">
+                <h1 id="lecture-page-title">특강</h1>
+                <p>Special Lectures</p>
+            </div>
         </section>
 
-        <section class="lecture-programs" aria-label="특강 프로그램">
-            <div class="lecture-desc">
-                <p>조직의 상황과 대상에 맞게 설계된 근거기반 특강 프로그램입니다.</p>
-                <p>현장에서 바로 적용 가능한 도구와 실습 중심으로 구성됩니다.</p>
+        <section class="lecture-filter-section" aria-label="특강 카테고리 필터">
+            <div class="filter-list">
+                <button class="filter-btn active" type="button" data-filter="all">전체</button>
+                <button class="filter-btn" type="button" data-filter="리더십">리더십</button>
+                <button class="filter-btn" type="button" data-filter="소통대화법">소통·대화법</button>
+                <button class="filter-btn" type="button" data-filter="자기이해강점">자기이해·강점</button>
+                <button class="filter-btn" type="button" data-filter="팀빌딩조직문화">팀빌딩·조직문화</button>
             </div>
+        </section>
 
-            <div class="lecture-tab-list" role="tablist" aria-label="특강 대상 선택">
-                <button class="lecture-tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="lecture-panel-org" id="lecture-tab-org" data-lecture-tab="org">
-                    <span class="lecture-tab-title">전 직원</span>
-                    <span class="lecture-tab-subtitle">조직문화</span>
-                </button>
-                <button class="lecture-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="lecture-panel-team" id="lecture-tab-team" data-lecture-tab="team">
-                    <span class="lecture-tab-title">팀 단위</span>
-                    <span class="lecture-tab-subtitle">워크숍</span>
-                </button>
-                <button class="lecture-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="lecture-panel-leader" id="lecture-tab-leader" data-lecture-tab="leader">
-                    <span class="lecture-tab-title">팀장 &amp; 리더</span>
-                    <span class="lecture-tab-subtitle">리더십</span>
-                </button>
+        <section class="lecture-categories" aria-label="특강 목록">
+            <div class="lecture-inner">
+                <section class="lecture-category" data-category="리더십">
+                    <div class="category-header">
+                        <div class="category-icon">⚡</div>
+                        <div class="category-info">
+                            <div class="category-title">리더십</div>
+                            <div class="category-desc">리더의 역할 전환과 자기만의 스타일 형성</div>
+                        </div>
+                    </div>
+                    <div class="lecture-grid">
+                        <div class="lcard">
+                            <span class="lcard-badge">리더십 코드</span>
+                            <div class="lcard-title">신임 리더를 위한 리더십 기초</div>
+                            <blockquote class="lcard-quote">"처음 리더가 됐는데, 어떻게 시작해야 할지 막막한가요?"</blockquote>
+                            <p class="lcard-desc">리더십 이론을 나의 언어와 현장의 언어로 옮기는 과정. 간호관리자로서 리더의 역할을 이해하고, 자신만의 방향을 처음으로 그려보는 첫 걸음.</p>
+                            <div class="lcard-tags">
+                                <span class="ltag">신임 수간호사</span>
+                                <span class="ltag">팀장급</span>
+                                <span class="ltag">3~4h</span>
+                            </div>
+                        </div>
+                        <div class="lcard">
+                            <span class="lcard-badge">리더십 플로리쉬</span>
+                            <div class="lcard-title">나만의 리더십을 현장에 꽃피우기</div>
+                            <blockquote class="lcard-quote">"리더십 교육을 받아도 현장에서는 다시 예전으로 돌아간다면?"</blockquote>
+                            <p class="lcard-desc">심리학적 관점을 현장에 접목해 나만의 리더십 스타일을 형성하는 과정. 구성원의 다양성을 실제로 경험하면서 진짜 리더십을 발휘하는 실전 역량을 키웁니다.</p>
+                            <div class="lcard-tags">
+                                <span class="ltag">수간호사·팀장</span>
+                                <span class="ltag">반일~1일</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lecture-category" data-category="소통대화법">
+                    <div class="category-header">
+                        <div class="category-icon">💬</div>
+                        <div class="category-info">
+                            <div class="category-title">소통·대화법</div>
+                            <div class="category-desc">감정을 언어로, 언어를 연결로 바꾸는 대화 훈련</div>
+                        </div>
+                    </div>
+                    <div class="lecture-grid">
+                        <div class="lcard">
+                            <span class="lcard-badge">마음을 성장시키는 공감과 소통</span>
+                            <div class="lcard-title">나부터 단단하게, 상처 없이 솔직하게</div>
+                            <blockquote class="lcard-quote">"솔직하게 말하면 상처를 주고, 참으면 내가 쌓이는 상황이라면?"</blockquote>
+                            <p class="lcard-desc">내 감정을 정확하게 인식하고 자기개방 공식으로 상처 없이 솔직하게 표현하는 법을 배웁니다. 나를 먼저 단단히 챙기는 것이 진짜 소통의 시작임을 알아가는 과정.</p>
+                            <div class="lcard-tags">
+                                <span class="ltag">전 구성원</span>
+                                <span class="ltag">NVC</span>
+                                <span class="ltag">3h</span>
+                            </div>
+                        </div>
+                        <div class="lcard">
+                            <span class="lcard-badge">마음을 잘 번역하면 관계가 달라집니다</span>
+                            <div class="lcard-title">상대방의 언어와 마음을 알아주는 대화법</div>
+                            <blockquote class="lcard-quote">"상대가 왜 저런 말을 하는지 이해하기 어려울 때가 많다면?"</blockquote>
+                            <p class="lcard-desc">부모, 선배, 리더로서 상대의 말 뒤에 있는 감정과 욕구를 읽어주는 것이 관계의 핵심. 비폭력대화 모델로 삶 속 관계를 새롭게 여는 실전 과정.</p>
+                            <div class="lcard-tags">
+                                <span class="ltag">리더·관리자</span>
+                                <span class="ltag">NVC</span>
+                                <span class="ltag">3~4h</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lecture-category" data-category="자기이해강점">
+                    <div class="category-header">
+                        <div class="category-icon">🔍</div>
+                        <div class="category-info">
+                            <div class="category-title">자기이해·강점</div>
+                            <div class="category-desc">성격 도구로 나와 관계를 새롭게 읽기</div>
+                        </div>
+                    </div>
+                    <div class="lecture-grid">
+                        <div class="lcard">
+                            <span class="lcard-badge">DISCplus 강점 탐색</span>
+                            <div class="lcard-title">DISC로 찾는 나의 강점과 성품</div>
+                            <blockquote class="lcard-quote">"내가 잘하는 것이 뭔지, 에너지가 살아나는 순간이 언제인지 잘 모른다면?"</blockquote>
+                            <p class="lcard-desc">DISC 성격도구로 내가 자연스럽게 잘하는 것과 에너지가 살아나는 순간을 발견합니다. 강점에서 출발하는 자기이해로, 나와 주변 사람에 대한 이해가 함께 깊어집니다.</p>
+                            <div class="lcard-tags">
+                                <span class="ltag">전 구성원</span>
+                                <span class="ltag">DISCplus</span>
+                                <span class="ltag">반일</span>
+                            </div>
+                        </div>
+                        <div class="lcard">
+                            <span class="lcard-badge">성격 통찰</span>
+                            <div class="lcard-title">성격으로 해석해보는 관계</div>
+                            <blockquote class="lcard-quote">"왜 저 사람과는 유독 맞지 않는다고 느껴질까요?"</blockquote>
+                            <p class="lcard-desc">삶과 관계가 풍성해지는 성격 통찰. 나의 기질을 깊이 이해할수록, 나를 조절하는 힘과 세상을 바라보는 눈이 함께 넓어집니다.</p>
+                            <div class="lcard-tags">
+                                <span class="ltag">전 구성원</span>
+                                <span class="ltag">VIA·DISCplus</span>
+                                <span class="ltag">3~4h</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="lecture-category" data-category="팀빌딩조직문화">
+                    <div class="category-header">
+                        <div class="category-icon">👥</div>
+                        <div class="category-info">
+                            <div class="category-title">팀빌딩·조직문화</div>
+                            <div class="category-desc">강점과 다양성을 기반으로 한 팀 문화 설계</div>
+                        </div>
+                    </div>
+                    <div class="lecture-grid">
+                        <div class="lcard">
+                            <span class="lcard-badge">팀 컬처 코드</span>
+                            <div class="lcard-title">어떤 부서를 만들고 싶은가</div>
+                            <blockquote class="lcard-quote">"팀원 각자는 괜찮은데, 함께하면 왜 자꾸 어긋나는 느낌이 든다면?"</blockquote>
+                            <p class="lcard-desc">팀의 강점과 다양성을 발견하고 서로 다른 구성원이 함께 성장하는 팀을 만드는 실전 과정. 소통과 협력의 문화를 리더와 팀원이 함께 만들어갑니다.</p>
+                            <div class="lcard-tags">
+                                <span class="ltag">팀 단위 워크숍</span>
+                                <span class="ltag">StrengthsFinder·VIA</span>
+                                <span class="ltag">반일~1일</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
+        </section>
 
-            <div class="lecture-panel-wrap">
-                <div class="lecture-panel active" id="lecture-panel-org" role="tabpanel" aria-labelledby="lecture-tab-org">
-                    <div class="lecture-card-stack">
-                        <article class="lecture-topic-card">
-                            <h2>심리적 안전감과 조직문화</h2>
-                            <p>구성원이 솔직하게 말하기 어렵고, 실수를 숨기는 분위기가 느껴질 때</p>
-                            <div class="lecture-card-model">NVC · Positive Leadership</div>
-                            <div class="lecture-tags">
-                                <span>조직문화</span>
-                                <span>심리적 안전감</span>
-                            </div>
-                        </article>
-                        <article class="lecture-topic-card">
-                            <h2>감정소진과 번아웃 예방</h2>
-                            <p>감정 소모가 큰 업무 환경에서 구성원이 점점 지쳐가고 있을 때</p>
-                            <div class="lecture-card-model">NVC · 자기공감</div>
-                            <div class="lecture-tags">
-                                <span>조직문화</span>
-                                <span>번아웃 예방</span>
-                            </div>
-                        </article>
-                        <article class="lecture-topic-card">
-                            <h2>변화에 함께 적응하기</h2>
-                            <p>조직 개편이나 새로운 방침 도입 후 구성원의 불안과 저항이 생길 때</p>
-                            <div class="lecture-card-model">Motivational Interviewing</div>
-                            <div class="lecture-tags">
-                                <span>조직문화</span>
-                                <span>변화관리</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="lecture-panel" id="lecture-panel-team" role="tabpanel" aria-labelledby="lecture-tab-team" hidden>
-                    <p class="lecture-panel-lead">팀원이 함께 참여하는 실습 중심 워크숍입니다.</p>
-                    <div class="lecture-card-stack">
-                        <article class="lecture-topic-card">
-                            <h2>팀 갈등과 소통 개선</h2>
-                            <p>팀원 간 소통 방식의 차이로 오해가 쌓이고, 협업이 점점 어려워질 때</p>
-                            <div class="lecture-card-model">DISCplus · NVC</div>
-                            <div class="lecture-tags">
-                                <span>갈등 관리</span>
-                                <span>커뮤니케이션</span>
-                            </div>
-                        </article>
-                        <article class="lecture-topic-card">
-                            <h2>팀 강점 발견 워크숍</h2>
-                            <p>팀원 각자가 어떤 역할에서 강점을 발휘하는지 파악하고 협업 방식을 바꾸고 싶을 때</p>
-                            <div class="lecture-card-model">StrengthsFinder · VIA</div>
-                            <div class="lecture-tags">
-                                <span>강점 발견</span>
-                                <span>팀워크</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="lecture-panel" id="lecture-panel-leader" role="tabpanel" aria-labelledby="lecture-tab-leader" hidden>
-                    <p class="lecture-panel-lead">사람을 이끄는 역할을 맡은 리더를 위한 실전 중심 특강입니다.</p>
-                    <div class="lecture-card-stack">
-                        <article class="lecture-topic-card">
-                            <h2>나를 아는 리더십</h2>
-                            <p>리더로서 나의 강점과 성향을 파악하고, 팀에 어떻게 적용할지 고민될 때</p>
-                            <div class="lecture-card-model">DISCplus · StrengthsFinder</div>
-                            <div class="lecture-tags">
-                                <span>리더십</span>
-                                <span>자기이해</span>
-                            </div>
-                        </article>
-                        <article class="lecture-topic-card">
-                            <h2>피드백과 코칭 대화</h2>
-                            <p>구성원에게 피드백을 주거나 목표를 함께 세우는 대화가 막막하게 느껴질 때</p>
-                            <div class="lecture-card-model">GROW 코칭 · NVC</div>
-                            <div class="lecture-tags">
-                                <span>리더십</span>
-                                <span>커뮤니케이션</span>
-                            </div>
-                        </article>
-                        <article class="lecture-topic-card">
-                            <h2>구성원의 동기 발견하기</h2>
-                            <p>구성원이 점점 수동적으로 변하거나, 어떻게 동기를 이끌어야 할지 모를 때</p>
-                            <div class="lecture-card-model">Motivational Interviewing</div>
-                            <div class="lecture-tags">
-                                <span>리더십</span>
-                                <span>동기부여</span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+        <section class="cta-section" aria-label="문의 안내">
+            <div class="cta-inner">
+                <p class="cta-text">프로그램·특강 문의 및 커스터마이징 상담은 이메일로 연락해 주세요.</p>
+                <a class="cta-btn" href="mailto:discplus2010@naver.com">이메일로 문의하기</a>
             </div>
         </section>
     </main>
@@ -171,37 +414,22 @@
         </div>
     </footer>
     <script>
-        const lectureTabs = document.querySelectorAll('[data-lecture-tab]');
-        const lecturePanels = document.querySelectorAll('.lecture-panel');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const lectureCategories = document.querySelectorAll('.lecture-category');
 
-        lectureTabs.forEach((tab) => {
-            tab.addEventListener('click', () => {
-                const target = tab.dataset.lectureTab;
+        filterButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
 
-                lectureTabs.forEach((item) => {
-                    item.classList.toggle('active', item === tab);
-                    item.setAttribute('aria-selected', item === tab ? 'true' : 'false');
-                });
+                filterButtons.forEach((item) => item.classList.remove('active'));
+                button.classList.add('active');
 
-                lecturePanels.forEach((panel) => {
-                    const isTarget = panel.id === `lecture-panel-${target}`;
-                    panel.classList.toggle('active', isTarget);
-                    panel.hidden = !isTarget;
+                lectureCategories.forEach((category) => {
+                    const shouldShow = filter === 'all' || category.dataset.category === filter;
+                    category.style.display = shouldShow ? '' : 'none';
                 });
             });
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

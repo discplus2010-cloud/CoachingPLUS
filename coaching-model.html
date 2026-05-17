@@ -1,13 +1,4 @@
-﻿<!DOCTYPE html>
-<!--
-Image paths:
-- Stage I header: /images/stage-1.jpg
-- Stage II header: /images/stage-2.jpg
-- Stage III header: /images/stage-3.jpg
-- DISCplus card: /images/model-disc.jpg
-- NVC card: /images/model-nvc.jpg
-- Positive Leadership card: /images/model-positive.jpg
--->
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -47,236 +38,229 @@ Image paths:
             <p>Coaching Models</p>
         </section>
 
-        <section class="stages-wrap" aria-label="코칭 모델 단계">
-            <article class="stage">
-                <div class="tl-col">
-                    <div class="tl-dot">I</div>
-                    <div class="tl-line"></div>
-                </div>
-                <div class="stage-body">
-                    <div class="stage-hd-card">
-                        <div class="hd-bg" style="background-image: url('/images/stage-1.jpg');"></div>
-                        <div class="hd-ov"></div>
-                        <div class="hd-txt">
-                            <div class="hd-label">STAGE I</div>
-                            <div class="hd-title">인간에 대한 체계적 이해</div>
-                            <div class="hd-desc">관점과 뇌과학을 기반으로 자기 자신을 이해하는 단계</div>
+        <section class="flow-section" aria-label="코칭 모델 3단계 흐름">
+            <div class="flow-cards" aria-label="코칭 모델 3단계 흐름">
+                <a class="flow-card flow-card--i" href="#stage-i">
+                    <span class="flow-stage">Stage I</span>
+                    <div class="flow-title">인간 이해</div>
+                    <div class="flow-desc">나와 타인을 보는 관점을 갖는다</div>
+                </a>
+                <span class="flow-arrow" aria-hidden="true">❯</span>
+                <a class="flow-card flow-card--ii" href="#stage-ii">
+                    <span class="flow-stage">Stage II</span>
+                    <div class="flow-title">대화</div>
+                    <div class="flow-desc">관계와 변화를 돕는 말을 배운다</div>
+                </a>
+                <span class="flow-arrow" aria-hidden="true">❯</span>
+                <a class="flow-card flow-card--iii" href="#stage-iii">
+                    <span class="flow-stage">Stage III</span>
+                    <div class="flow-title">조직문화</div>
+                    <div class="flow-desc">성장을 문화와 리더십으로 연결한다</div>
+                </a>
+            </div>
+
+            <p class="flow-desc-main">
+                코칭플러스는 자기이해 ❯ 대화 ❯ 조직문화의 3단계 구조로 모델을 통합합니다.<br>
+                각 Stage의 도구들은 독립적으로도 활용되지만, 코칭 세션과 프로그램 안에서
+                하나의 흐름으로 연결됩니다.
+            </p>
+        </section>
+
+        <section class="stage-section stage-section--i" id="stage-i" aria-labelledby="stage-i-title">
+            <div class="stage-intro">
+                <div class="stage-intro-label">STAGE I · 인간에 대한 체계적 이해</div>
+                <h2 class="stage-intro-title" id="stage-i-title">관점과 뇌과학을 기반으로 자기 자신을 이해하는 단계</h2>
+                <p class="stage-intro-desc">
+                    이 단계에서 코치는 "나는 왜 이렇게 반응하는가"라는 질문에서 출발해,
+                    자신과 타인의 행동 패턴을 새로운 언어로 이해하기 시작합니다.
+                </p>
+            </div>
+
+            <div class="model-list">
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">DISCplus</span>
+                            <span class="model-en">— DiSC-based Assessment</span>
                         </div>
+                        <span class="model-role-tag">관찰·알아차림·의식적 선택</span>
                     </div>
-
-                    <div class="model-cards">
-                        <div class="mcard featured" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">DISCplus</span>
-                                    <span class="men">DiSC-based Assessment</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img" style="background-image: url('/images/model-disc.jpg');"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">성격유형과 뇌과학을 기반으로 자신과 타인의 행동 패턴을 이해합니다. Negative bias를 인식하고, 관찰 → 알아차림 → 의식적 선택의 프로세스를 실습합니다. role model과 supervision을 통해 실생활에 적용합니다.</p>
-                                        <p class="mrole">관찰 · 알아차림 · 의식적 선택</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mcard" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">StrengthsFinder</span>
-                                    <span class="men">Gallup StrengthsFinder</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img no-img"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">Gallup의 강점 진단 도구로 개인의 고유한 강점 테마를 발견합니다. 강점을 인식하고 활용하는 것이 성과와 웰빙을 동시에 높인다는 근거를 기반으로 합니다.</p>
-                                        <p class="mrole">강점 중심 자기이해 도구</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mcard" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">Values in Action</span>
-                                    <span class="men">VIA Character Strengths</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img no-img"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">성품강점(Character Strengths)을 측정하고 일상과 리더십에 적용하는 근거기반 도구입니다. 자신의 핵심 강점을 발견하고 조직 내에서 의미 있게 사용하는 방법을 탐색합니다.</p>
-                                        <p class="mrole">성품강점 탐색 도구</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="model-desc">
+                        성격유형과 뇌과학을 기반으로 자신과 타인의 행동 패턴을 이해합니다.<br>
+                        Negative bias를 인식하고, 관찰 → 알아차림 → 의식적 선택의 프로세스를 실습합니다.
+                    </p>
                 </div>
-            </article>
 
-            <article class="stage">
-                <div class="tl-col">
-                    <div class="tl-dot">II</div>
-                    <div class="tl-line"></div>
-                </div>
-                <div class="stage-body">
-                    <div class="stage-hd-card">
-                        <div class="hd-bg" style="background-image: url('/images/stage-2.jpg');"></div>
-                        <div class="hd-ov"></div>
-                        <div class="hd-txt">
-                            <div class="hd-label">STAGE II</div>
-                            <div class="hd-title">개인적 · 문화적 진화를 위한 대화 모델</div>
-                            <div class="hd-desc">목표 · 관계 · 변화를 위한 세 가지 대화 모델을 학습합니다</div>
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">StrengthsFinder</span>
+                            <span class="model-en">— Gallup StrengthsFinder</span>
                         </div>
+                        <span class="model-role-tag">강점 중심 자기이해</span>
                     </div>
-
-                    <div class="model-cards">
-                        <div class="mcard featured" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">비폭력대화 (NVC)</span>
-                                    <span class="men">Nonviolent Communication</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img" style="background-image: url('/images/model-nvc.jpg');"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">Marshall Rosenberg가 개발한 대화 모델로, 관찰 · 느낌 · 욕구 · 부탁의 4요소를 통해 자신을 솔직하게 표현하고 상대와 공감으로 연결하는 방법을 학습합니다. 자칼 언어(평가·판단)와 기린 언어(공감·연결)의 구조를 통해 대화 습관을 전환합니다.</p>
-                                        <p class="mrole">관계중심 대화 모델</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mcard" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">GROW 코칭</span>
-                                    <span class="men">GROW Coaching Model</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img no-img"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">Goal · Reality · Options · Will의 4단계로 구성된 목표 중심 업무대화 모델입니다. 코치가 질문을 통해 상대방 스스로 해결책을 발견하도록 이끄는 구조화된 대화법입니다.</p>
-                                        <p class="mrole">업무중심 대화 모델</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mcard" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">동기강화상담</span>
-                                    <span class="men">Motivational Interviewing</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img no-img"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">변화에 대한 내적 동기를 이끌어내는 상담 기반 대화 모델입니다. 변화에 대한 양가감정을 다루고, 저항을 줄이며 자발적 변화를 촉진합니다.</p>
-                                        <p class="mrole">변화촉진 대화 모델</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="model-desc">
+                        개인의 고유한 강점 테마를 발견하는 진단 도구입니다.<br>
+                        강점을 인식하고 활용하는 것이 성과와 웰빙을 동시에 높인다는 근거를 기반으로 합니다.
+                    </p>
                 </div>
-            </article>
 
-            <article class="stage">
-                <div class="tl-col">
-                    <div class="tl-dot">III</div>
-                </div>
-                <div class="stage-body">
-                    <div class="stage-hd-card">
-                        <div class="hd-bg" style="background-image: url('/images/stage-3.jpg');"></div>
-                        <div class="hd-ov"></div>
-                        <div class="hd-txt">
-                            <div class="hd-label">STAGE III</div>
-                            <div class="hd-title">LeadershipPLUS &amp; 조직문화</div>
-                            <div class="hd-desc">리더의 성장과 구성원의 발달을 조직문화로 연결하는 단계</div>
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">Values in Action</span>
+                            <span class="model-en">— VIA Character Strengths</span>
                         </div>
+                        <span class="model-role-tag">성품강점 탐색</span>
                     </div>
-
-                    <div class="model-cards">
-                        <div class="mcard featured" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">긍정 리더십</span>
-                                    <span class="men">Positive Leadership — Kim Cameron</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img" style="background-image: url('/images/model-positive.jpg');"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">Kim Cameron의 긍정에너지 경영 모델로, 긍정적 언어 · 관계 · 의미 부여 · 분위기 조성의 4가지 전략을 통해 리더가 조직의 성과와 구성원의 웰빙을 동시에 높이는 방법을 학습합니다.</p>
-                                        <p class="mrole">긍정에너지 경영 모델</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mcard" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">강점 기반 리더십</span>
-                                    <span class="men">Strengths Based Leadership</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img no-img"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">DISCplus · Gallup · VIA를 통합한 변혁적(Transformational) 리더십 모델입니다. 리더 자신의 강점에서 출발해 구성원 각자의 강점을 발견하고 이끌어냅니다.</p>
-                                        <p class="mrole">통합 변혁적 리더십 모델</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mcard" data-accordion>
-                            <button class="mbtn" aria-expanded="false">
-                                <div class="mbtn-left">
-                                    <span class="mkr">성인발달 3단계</span>
-                                    <span class="men">Three Plateaus of Adult Mental Development</span>
-                                </div>
-                                <span class="acc-icon">∨</span>
-                            </button>
-                            <div class="mdetail">
-                                <div class="mdetail-inner">
-                                    <div class="mdetail-img no-img"></div>
-                                    <div class="mdetail-text">
-                                        <p class="msummary">Robert Kegan &amp; Lisa Laskow Lahey(2009)의 성인발달 이론입니다. 리더의 인지 · 정서 · 행동 패턴이 사회화된 마음 → 자기주도적 마음 → 자기변혁적 마음으로 어떻게 성장하는지를 설명하고, 각 단계에 맞는 리더십 개발 방향을 탐색합니다.</p>
-                                        <p class="mrole">성인발달 이론</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="model-desc">
+                        성품강점을 측정하고 일상과 리더십에 적용하는 근거기반 도구입니다.<br>
+                        자신의 핵심 강점을 발견하고 조직 내에서 의미 있게 사용하는 방법을 탐색합니다.
+                    </p>
                 </div>
-            </article>
+            </div>
+
+            <div class="stage-courses">
+                <span class="courses-label">적용 과정</span>
+                <a class="course-tag" href="./programs.html">DISCplus FT/강사과정</a>
+                <a class="course-tag" href="./programs.html">리더십 코드</a>
+                <a class="course-tag" href="./programs.html">리더십 플로리쉬</a>
+                <a class="course-tag" href="./special-lecture.html">자기이해 특강</a>
+            </div>
+        </section>
+
+        <section class="stage-section stage-section--ii" id="stage-ii" aria-labelledby="stage-ii-title">
+            <div class="stage-intro">
+                <div class="stage-intro-label">STAGE II · 개인적·문화적 진화를 위한 대화 모델</div>
+                <h2 class="stage-intro-title" id="stage-ii-title">목표·관계·변화를 위한 세 가지 대화 모델을 학습합니다</h2>
+                <p class="stage-intro-desc">
+                    이 단계에서 코치는 "어떻게 말하느냐가 관계를 바꾼다"는 것을 경험하며,
+                    자신의 대화 습관을 관찰하고 새로운 대화 방식을 실습합니다.
+                </p>
+            </div>
+
+            <div class="model-list">
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">비폭력대화 (NVC)</span>
+                            <span class="model-en">— Nonviolent Communication</span>
+                        </div>
+                        <span class="model-role-tag">관계중심 대화 모델</span>
+                    </div>
+                    <p class="model-desc">
+                        관찰·느낌·욕구·부탁의 4요소를 통해 자신을 솔직하게 표현하고
+                        상대와 공감으로 연결하는 방법을 학습합니다.<br>
+                        평가·판단의 언어에서 공감·연결의 언어로 대화 습관을 전환합니다.
+                    </p>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">GROW 코칭</span>
+                            <span class="model-en">— GROW Coaching Model</span>
+                        </div>
+                        <span class="model-role-tag">업무중심 대화 모델</span>
+                    </div>
+                    <p class="model-desc">
+                        Goal·Reality·Options·Will의 4단계로 구성된 목표 중심 업무대화 모델입니다.<br>
+                        코치가 질문을 통해 상대방 스스로 해결책을 발견하도록 이끄는 구조화된 대화법입니다.
+                    </p>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">동기강화상담</span>
+                            <span class="model-en">— Motivational Interviewing</span>
+                        </div>
+                        <span class="model-role-tag">변화촉진 대화 모델</span>
+                    </div>
+                    <p class="model-desc">
+                        변화에 대한 내적 동기를 이끌어내는 상담 기반 대화 모델입니다.<br>
+                        변화에 대한 양가감정을 다루고, 저항을 줄이며 자발적 변화를 촉진합니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="stage-courses">
+                <span class="courses-label">적용 과정</span>
+                <a class="course-tag" href="./programs.html">코칭 기초 과정</a>
+                <a class="course-tag" href="./programs.html">리더십 코드</a>
+                <a class="course-tag" href="./special-lecture.html">소통·대화 특강</a>
+                <a class="course-tag" href="./programs.html">원온원 실습</a>
+            </div>
+        </section>
+
+        <section class="stage-section stage-section--iii" id="stage-iii" aria-labelledby="stage-iii-title">
+            <div class="stage-intro">
+                <div class="stage-intro-label">STAGE III · LeadershipPLUS &amp; 조직문화</div>
+                <h2 class="stage-intro-title" id="stage-iii-title">리더의 성장과 구성원의 발달을 조직문화로 연결하는 단계</h2>
+                <p class="stage-intro-desc">
+                    이 단계에서 코치는 "내가 어떤 리더인가"를 넘어
+                    "우리 조직이 어떤 문화를 만들어가는가"로 시선을 확장합니다.
+                </p>
+            </div>
+
+            <div class="model-list">
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">긍정 리더십</span>
+                            <span class="model-en">— Positive Leadership (Kim Cameron)</span>
+                        </div>
+                        <span class="model-role-tag">긍정에너지 경영 모델</span>
+                    </div>
+                    <p class="model-desc">
+                        긍정적 언어·관계·의미 부여·분위기 조성의 4가지 전략을 통해
+                        리더가 조직의 성과와 구성원의 웰빙을 동시에 높이는 방법을 학습합니다.
+                    </p>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">강점 기반 리더십</span>
+                            <span class="model-en">— Strengths Based Leadership</span>
+                        </div>
+                        <span class="model-role-tag">통합 변혁적 리더십</span>
+                    </div>
+                    <p class="model-desc">
+                        DISCplus·Gallup·VIA를 통합한 변혁적 리더십 모델입니다.
+                        리더 자신의 강점에서 출발해 구성원 각자의 강점을 발견하고 이끌어냅니다.
+                    </p>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-card-top">
+                        <div class="model-name-wrap">
+                            <span class="model-kr">성인발달 3단계</span>
+                            <span class="model-en">— Three Plateaus (Kegan &amp; Lahey)</span>
+                        </div>
+                        <span class="model-role-tag">성인발달 이론</span>
+                    </div>
+                    <p class="model-desc">
+                        리더의 인지·정서·행동 패턴이 사회화된 마음 → 자기주도적 마음 → 자기변혁적 마음으로
+                        어떻게 성장하는지를 설명하고, 각 단계에 맞는 리더십 개발 방향을 탐색합니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="stage-courses">
+                <span class="courses-label">적용 과정</span>
+                <a class="course-tag" href="./programs.html">리더십 플로리쉬</a>
+                <a class="course-tag" href="./programs.html">간호리더십 과정</a>
+                <a class="course-tag" href="./special-lecture.html">팀빌딩 특강</a>
+                <a class="course-tag" href="./special-lecture.html">조직문화 특강</a>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-label="문의 안내">
+            <div class="cta-inner">
+                <p class="cta-text">프로그램·특강 문의 및 커스터마이징 상담은 이메일로 연락해 주세요.</p>
+                <a class="cta-btn" href="mailto:discplus2010@naver.com">이메일로 문의하기</a>
+            </div>
         </section>
     </main>
 
@@ -297,21 +281,5 @@ Image paths:
             <p>&copy; 코칭플러스. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        const accordions = document.querySelectorAll('[data-accordion]');
-
-        accordions.forEach((card) => {
-            const button = card.querySelector('.mbtn');
-            const detail = card.querySelector('.mdetail');
-
-            button.addEventListener('click', () => {
-                const isOpen = button.getAttribute('aria-expanded') === 'true';
-
-                button.setAttribute('aria-expanded', String(!isOpen));
-                detail.style.display = isOpen ? 'none' : 'block';
-            });
-        });
-    </script>
 </body>
 </html>

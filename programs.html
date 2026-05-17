@@ -4,242 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로그램 - 코칭플러스</title>
-    <meta name="description" content="간호사와 병원을 위한 코칭 프로그램을 안내합니다.">
+    <meta name="description" content="코칭플러스의 DISCplus FT, 간호리더십, 코칭 기초 과정을 안내합니다.">
     <meta name="theme-color" content="#3e2c50">
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body,
-        button {
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-
-        .pg-header {
-            background-color: var(--brand-dark);
-            background-image: linear-gradient(120deg, rgba(51, 36, 68, 0.72), rgba(47, 34, 71, 0.5)), url('./assets/images/programs-hero-temp.svg');
-            background-size: cover;
-            background-position: center;
-            padding: 3rem 2rem;
-            text-align: center;
-            border-radius: 8px;
-            margin: 40px 0 0;
-        }
-
-        .pg-header h1 {
-            font-size: 2.7rem;
-            font-weight: 700;
-            color: var(--text-white);
-            line-height: 1.35;
-        }
-
-        .pg-header p {
-            margin-top: 6px;
-            font-size: 1.25rem;
-            color: var(--text-white);
-            opacity: 1;
-        }
-
-        .page-body {
-            background: var(--bg-page);
-            padding: 2.8rem 1.5rem 4rem;
-        }
-
-        .inner {
-            max-width: 1040px;
-            margin: 0 auto;
-        }
-
-        .pg-intro {
-            margin-bottom: 2.2rem;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            line-height: 1.85;
-        }
-
-        .program-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .prog-card {
-            background: var(--bg-surface);
-            border-radius: 10px;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 5px 14px rgba(62, 44, 80, 0.08);
-            overflow: hidden;
-        }
-
-        .prog-btn {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 1.3rem 1.35rem;
-            background: var(--bg-surface);
-            border: none;
-            border-left: 5px solid var(--brand-standard);
-            cursor: pointer;
-            text-align: left;
-        }
-
-        .prog-btn:hover {
-            background: var(--bg-soft);
-        }
-
-        .prog-btn-left {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .prog-title {
-            font-size: 1.34rem;
-            font-weight: 700;
-            color: var(--text-black);
-        }
-
-        .prog-sub {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-        }
-
-        .acc-icon {
-            flex-shrink: 0;
-            min-width: 1.35rem;
-            color: #aaaaaa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.96rem;
-            font-weight: 700;
-            line-height: 1;
-            transform: scaleX(1.28) scaleY(0.72);
-            transition: transform 0.22s ease;
-        }
-
-        .prog-btn[aria-expanded="true"] .acc-icon {
-            transform: rotate(180deg) scaleX(1.28) scaleY(0.72);
-        }
-
-        .prog-detail {
-            border-top: 1px solid var(--border-light);
-        }
-
-        .prog-detail-inner {
-            padding: 1.4rem 1.45rem 1.5rem;
-            display: grid;
-            gap: 1.38rem;
-        }
-
-        .prog-section {
-            display: grid;
-            gap: 0.55rem;
-        }
-
-        .prog-section-title {
-            font-size: 1.14rem;
-            font-weight: 700;
-            color: var(--brand-standard);
-            line-height: 1.35;
-        }
-
-        .prog-section-text {
-            font-size: 1.14rem;
-            color: var(--text-body);
-            line-height: 1.75;
-        }
-
-        .prog-focus {
-            display: flex;
-            flex-direction: column;
-            gap: 0.58rem;
-        }
-
-        .focus-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .focus-item::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--brand-standard);
-            flex-shrink: 0;
-            margin-top: 0.62rem;
-        }
-
-        .focus-text {
-            font-size: 1.14rem;
-            color: var(--text-body);
-            line-height: 1.65;
-        }
-
-        .prog-footer {
-            padding: 0.85rem 1.35rem 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .prog-tag {
-            font-size: 0.9rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: var(--bg-soft);
-            color: var(--brand-bright);
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .pg-header {
-                margin-top: 40px;
-                padding: 2.4rem 1.5rem;
-            }
-
-            .pg-header h1 {
-                font-size: 2.05rem;
-            }
-
-            .pg-header p {
-                font-size: 1rem;
-            }
-
-            .page-body {
-                padding: 2.1rem 1rem 3.2rem;
-            }
-
-            .pg-intro {
-                font-size: 1.05rem;
-            }
-
-            .prog-btn {
-                padding: 1.12rem 1rem;
-            }
-
-            .prog-title {
-                font-size: 1.18rem;
-            }
-
-            .prog-sub,
-            .prog-section-text,
-            .focus-text {
-                font-size: 1rem;
-            }
-
-            .prog-detail-inner {
-                padding: 1.18rem 1rem 1.28rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- 헤더 & 내비게이션 -->
@@ -265,120 +32,344 @@
         </div>
     </header>
 
-    <!-- 메인 콘텐츠 -->
     <main>
         <section class="pg-header" aria-labelledby="program-page-title">
             <h1 id="program-page-title">프로그램</h1>
             <p>Programs</p>
         </section>
 
-        <section class="page-body" aria-label="프로그램 소개와 목록">
-            <div class="inner">
-                <p class="pg-intro">
-                    CoachingPLUS의 프로그램은 리더의 인지·정서·행동의 성장을 함께 설계하는 장기 과정입니다.
-                </p>
+        <section class="prog-tabs-section" aria-label="프로그램 선택">
+            <div class="prog-tabs" role="tablist" aria-label="프로그램 탭">
+                <button class="prog-tab-btn active" type="button" data-panel="discplus">
+                    DISCplus FT
+                    <span class="tab-sub">민간자격 강사과정</span>
+                </button>
+                <button class="prog-tab-btn" type="button" data-panel="nursing">
+                    간호리더십
+                    <span class="tab-sub">리더십 코드 · 플로리쉬</span>
+                </button>
+                <button class="prog-tab-btn" type="button" data-panel="coaching">
+                    코칭 기초
+                    <span class="tab-sub">N&amp;H Coaching</span>
+                </button>
+            </div>
+        </section>
 
-                <div class="program-list">
-                    <div class="prog-card" data-accordion>
-                        <button class="prog-btn" type="button" aria-expanded="false">
-                            <div class="prog-btn-left">
-                                <span class="prog-title">1기 수간호사</span>
-                                <span class="prog-sub">가까운 관계 안에서의 리더십 · 자기관리 중심</span>
-                            </div>
-                            <span class="acc-icon">∨</span>
-                        </button>
-                        <div class="prog-detail" hidden>
-                            <div class="prog-detail-inner">
-                                <div class="prog-section">
-                                    <h2 class="prog-section-title">대상</h2>
-                                    <p class="prog-section-text">수간호사 및 가까운 관계 안에서 리더십을 발휘하는 현장 리더</p>
-                                </div>
-
-                                <div class="prog-section">
-                                    <h2 class="prog-section-title">주요목표</h2>
-                                    <div class="prog-focus">
-                                        <div class="focus-item">
-                                            <div class="focus-text">나의 성격과 행동 패턴 이해</div>
-                                        </div>
-                                        <div class="focus-item">
-                                            <div class="focus-text">타인의 감정과 성향 파악</div>
-                                        </div>
-                                        <div class="focus-item">
-                                            <div class="focus-text">갈등 상황 대처와 관계 회복</div>
-                                        </div>
-                                        <div class="focus-item">
-                                            <div class="focus-text">팀원의 동기 발견과 성장 지원</div>
-                                        </div>
-                                        <div class="focus-item">
-                                            <div class="focus-text">리더십 역량 모델과 성장 방향 설계</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="prog-section">
-                                    <h2 class="prog-section-title">진행방식</h2>
-                                    <p class="prog-section-text">진단, 강의, 실습, 그룹 코칭을 결합한 참여형 과정으로 진행합니다.</p>
-                                </div>
-                            </div>
-                            <div class="prog-footer">
-                                <span class="prog-tag">자기이해</span>
-                                <span class="prog-tag">공감 대화</span>
-                                <span class="prog-tag">갈등 관리</span>
-                                <span class="prog-tag">관계 중심</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="prog-card" data-accordion>
-                        <button class="prog-btn" type="button" aria-expanded="false">
-                            <div class="prog-btn-left">
-                                <span class="prog-title">1기 간호팀장</span>
-                                <span class="prog-sub">넓은 조직을 이끄는 시스템 · 조직문화 중심</span>
-                            </div>
-                            <span class="acc-icon">∨</span>
-                        </button>
-                        <div class="prog-detail" hidden>
-                            <div class="prog-detail-inner">
-                                <div class="prog-section">
-                                    <h2 class="prog-section-title">대상</h2>
-                                    <p class="prog-section-text">간호팀장 및 넓은 조직 단위의 성과와 문화를 이끄는 리더</p>
-                                </div>
-
-                                <div class="prog-section">
-                                    <h2 class="prog-section-title">주요목표</h2>
-                                    <div class="prog-focus">
-                                        <div class="focus-item">
-                                            <div class="focus-text">팀 성과를 높이는 시스템 리더십</div>
-                                        </div>
-                                        <div class="focus-item">
-                                            <div class="focus-text">변화 관리와 구성원 동기 이끌기</div>
-                                        </div>
-                                        <div class="focus-item">
-                                            <div class="focus-text">팀플레이어 역할과 조직 분위기 조성</div>
-                                        </div>
-                                        <div class="focus-item">
-                                            <div class="focus-text">조직 안에서 나의 성장 목표 발견</div>
-                                        </div>
-                                        <div class="focus-item">
-                                            <div class="focus-text">발달심리학으로 보는 조직 성장</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="prog-section">
-                                    <h2 class="prog-section-title">진행방식</h2>
-                                    <p class="prog-section-text">조직 진단, 사례 토론, 리더십 실습, 실행 과제 점검을 포함한 과정으로 진행합니다.</p>
-                                </div>
-                            </div>
-                            <div class="prog-footer">
-                                <span class="prog-tag">시스템 리더십</span>
-                                <span class="prog-tag">조직문화</span>
-                                <span class="prog-tag">변화 관리</span>
-                                <span class="prog-tag">성인발달</span>
-                            </div>
-                        </div>
+        <section class="prog-panel active" id="panel-discplus" aria-label="DISCplus FT 과정">
+            <div class="prog-inner">
+                <div class="prog-hero">
+                    <span class="prog-badge">민간자격 인증 과정</span>
+                    <h2>DISCplus FT / 강사과정</h2>
+                    <p>성격강점을 기반으로 나와 상대방을 이해하고, 관계를 조절하는 도구를 직접 가르칠 수 있는 강사 양성 과정입니다.</p>
+                    <div class="prog-meta">
+                        <span class="meta-pill">⏱ 총 24시간 (8H × 3일)</span>
+                        <span class="meta-pill">🖥 온라인 (Zoom)</span>
+                        <span class="meta-pill">👥 61기 이상 운영</span>
+                        <span class="meta-pill">🔁 재수강 가능</span>
                     </div>
                 </div>
+
+                <section class="for-who">
+                    <div class="prog-section-label">FOR WHO</div>
+                    <h2 class="prog-section-title">이런 분께 추천합니다</h2>
+                    <div class="fw-grid">
+                        <div class="fw-card">
+                            <div class="fw-title">강사·코치</div>
+                            <p class="fw-desc">성격도구를 강의에 체계적으로 활용하고 싶은 분</p>
+                        </div>
+                        <div class="fw-card">
+                            <div class="fw-title">HR·교육 담당자</div>
+                            <p class="fw-desc">조직 내 진단 도구와 팀빌딩 프로그램이 필요한 분</p>
+                        </div>
+                        <div class="fw-card">
+                            <div class="fw-title">리더·관리자</div>
+                            <p class="fw-desc">구성원 이해와 관계 조절 역량을 높이고 싶은 분</p>
+                        </div>
+                        <div class="fw-card">
+                            <div class="fw-title">상담사·교사</div>
+                            <p class="fw-desc">대인관계 장면에서 성격도구를 전문적으로 쓰고 싶은 분</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="disc-intro">
+                    <div class="prog-section-label">WHAT IS DISCPLUS</div>
+                    <h2 class="prog-section-title">DISCplus, 어떤 도구인가요?</h2>
+                    <p class="section-desc">단순하지만 강력한 두 축으로 사람을 읽고, 관계를 바꾸는 근거기반(Evidence-Based) 성격 도구입니다.</p>
+                    <div class="disc-quote">
+                        DISCplus는 속도(Motor)와 우선순위(Compass)라는 두 구성개념을 통해 나의 강점과 가치, 싫어하는 것, 소통 방식, 스트레스 반응까지 구체적으로 파악할 수 있습니다. '왜 저 사람과는 자꾸 부딪히는가'에서 '어떻게 하면 함께 잘 일할 수 있는가'로 질문을 바꾸는 도구입니다.
+                    </div>
+                    <div class="axis-grid">
+                        <div class="axis-card">
+                            <h3>Motor — 속도</h3>
+                            <p>다른 사람과 함께할 때 가장 큰 차이와 갈등을 만드는 축. 직관적으로 느끼거나 관찰이 가능해 조절 전략을 세우기 쉽습니다.</p>
+                            <span class="axis-tag">빠르다·외향·열정적</span>
+                            <span class="axis-tag">느리다·내향·신중한</span>
+                        </div>
+                        <div class="axis-card">
+                            <h3>Compass — 우선순위</h3>
+                            <p>직장에서 가장 큰 스트레스와 인정받을 수 있는 요인을 결정하는 축. 우선순위의 차이가 소통 방향과 동기부여 방식을 완전히 다르게 만듭니다.</p>
+                            <span class="axis-tag">업무·성과·기능 우선</span>
+                            <span class="axis-tag">관계·감정·공유 우선</span>
+                        </div>
+                    </div>
+                    <div class="disc-use-label">개인</div>
+                    <div class="disc-use-list">
+                        <div class="disc-use-item">자기탐색 — 나의 강점, 가치, 행동 패턴</div>
+                        <div class="disc-use-item">대인관계 개선 — 조절 및 변화 전략</div>
+                        <div class="disc-use-item">업무·관계에서의 강점 발견과 활용</div>
+                        <div class="disc-use-item">스타일에 따른 갈등 해결 방안</div>
+                        <div class="disc-use-item">나만의 리더십 스타일 개발</div>
+                        <div class="disc-use-item">스타일별 관계 향유 방법과 코칭</div>
+                    </div>
+                    <div class="disc-use-label">조직·팀</div>
+                    <div class="disc-use-list">
+                        <div class="disc-use-item">Team Map으로 조직 구성원의 역동 파악</div>
+                        <div class="disc-use-item">강점 기반 조직문화 형성</div>
+                        <div class="disc-use-item">행동특성 이해를 통한 팀빌딩·팀워크 향상</div>
+                        <div class="disc-use-item">리더십·팔로워십 코칭과 성과 향상</div>
+                        <div class="disc-use-item">조직 내 관계 맵 &amp; 갈등 관리</div>
+                        <div class="disc-use-item">생산성 향상을 위한 업무 배치 전략</div>
+                    </div>
+                </section>
+
+                <section class="what-you-get">
+                    <div class="prog-section-label">WHAT YOU GET</div>
+                    <h2 class="prog-section-title">수료 후 취득하는 것</h2>
+                    <div class="wyg-grid">
+                        <div class="wyg-card">
+                            <div class="wyg-title">민간자격증 (교육부 등록)</div>
+                            <p class="wyg-desc">DISCplus 일반강사 자격증 발급 (등록번호 2016-005757)</p>
+                        </div>
+                        <div class="wyg-card">
+                            <div class="wyg-title">정식 진단지 사용권</div>
+                            <p class="wyg-desc">DISCplus 정식 진단지를 강의·코칭에 활용할 수 있는 사용권 부여</p>
+                        </div>
+                        <div class="wyg-card">
+                            <div class="wyg-title">강의 자료 일체</div>
+                            <p class="wyg-desc">FT 매뉴얼·워크북, Basic Report, DISC 도서, 강의 PPT 및 관련 자료 제공</p>
+                        </div>
+                        <div class="wyg-card">
+                            <div class="wyg-title">재수강 혜택</div>
+                            <p class="wyg-desc">수료 후 30% 비용(264,000원)으로 재수강 가능. 지속적인 역량 유지와 심화 학습 지원</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="curriculum">
+                    <div class="prog-section-label">CURRICULUM</div>
+                    <h2 class="prog-section-title">6개 모듈, 24시간 커리큘럼</h2>
+                    <div class="module-list">
+                        <div class="module-item">
+                            <span class="mod-num">M1</span>
+                            <div>
+                                <div class="mod-title">DISCplus</div>
+                                <p class="mod-desc">DISCplus 들어가기 · 성격과 패턴 · 성격과 뇌 · 성격과 행동패턴 · Start with WHY</p>
+                            </div>
+                        </div>
+                        <div class="module-item">
+                            <span class="mod-num">M2</span>
+                            <div>
+                                <div class="mod-title">DISCplus 진단과 진단해석</div>
+                                <p class="mod-desc">진단 가이드 · 진단 · 그래프 해석 · 보충진단 · 다면평가</p>
+                            </div>
+                        </div>
+                        <div class="module-item">
+                            <span class="mod-num">M3</span>
+                            <div>
+                                <div class="mod-title">DISCplus 구성개념</div>
+                                <p class="mod-desc">Think HOW · 속도와 우선순위 구성개념 심화 · glossary</p>
+                            </div>
+                        </div>
+                        <div class="module-item">
+                            <span class="mod-num">M4</span>
+                            <div>
+                                <div class="mod-title">DISCplus 변화와 성장의 4단계</div>
+                                <p class="mod-desc">Do WHAT · 자신의 성격 스타일 파악 → 타인 관찰 → 스타일 조절 → 팀 조직</p>
+                            </div>
+                        </div>
+                        <div class="module-item">
+                            <span class="mod-num">M5</span>
+                            <div>
+                                <div class="mod-title">DISCplus 강사/FT 되기</div>
+                                <p class="mod-desc">강사/FT · 분야별 활용 및 적용</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="course-info">
+                    <div class="prog-section-label">COURSE INFO</div>
+                    <h2 class="prog-section-title">과정 안내</h2>
+                    <div class="info-table">
+                        <div class="info-row"><div class="info-label">교육 시간</div><div class="info-value">총 24시간 (8시간 × 3일)</div></div>
+                        <div class="info-row"><div class="info-label">진행 방식</div><div class="info-value">온라인 실시간 (Zoom) — 오프라인 병행 가능</div></div>
+                        <div class="info-row"><div class="info-label">교육비</div><div class="info-value price">880,000원 / 재수강 264,000원 (30%)</div></div>
+                        <div class="info-row"><div class="info-label">결제 방법</div><div class="info-value">계좌이체·카드결제 가능</div></div>
+                        <div class="info-row"><div class="info-label">신청 방법</div><div class="info-value">네이버 톡톡 또는 이메일 문의 후 안내</div></div>
+                        <div class="info-row"><div class="info-label">문의</div><div class="info-value">discplus2010@naver.com</div></div>
+                    </div>
+                    <div class="apply-banner">
+                        <div>
+                            <div class="apply-banner-title">수강 신청·일정 문의</div>
+                            <div class="apply-banner-desc">다음 기수 일정 및 커리큘럼 상세 안내를 받아보세요.</div>
+                        </div>
+                        <a href="#" class="apply-btn">신청하기 →</a>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="prog-panel" id="panel-nursing" aria-label="간호리더십 과정">
+            <div class="prog-inner">
+                <div class="prog-hero">
+                    <span class="prog-badge">간호리더십 PROGRAMS</span>
+                    <h2>간호 리더를 위한 맞춤 성장 과정</h2>
+                    <p>이론과 현장이 연결되는 구조적 리더십 교육. 인지·정서·행동의 균형 잡힌 성장을 설계합니다.</p>
+                </div>
+
+                <div class="sub-prog-selector" aria-label="간호리더십 세부 과정 선택">
+                    <button class="sub-card active" type="button" data-sub-program="code">
+                        <span class="sub-badge">신임리더 과정</span>
+                        <div class="sub-title">리더십 코드</div>
+                        <p class="sub-desc">Leadership Code — 처음 리더가 된 수간호사를 위한 기초 과정</p>
+                    </button>
+                    <button class="sub-card" type="button" data-sub-program="flourish">
+                        <span class="sub-badge">팀장 리더십 과정</span>
+                        <div class="sub-title">리더십 플로리쉬</div>
+                        <p class="sub-desc">Leadership Flourish — 넓은 조직을 이끄는 팀장급 심화 과정</p>
+                    </button>
+                </div>
+
+                <div class="sub-detail active" id="prog-code">
+                    <div class="prog-hero">
+                        <span class="prog-badge">신임리더 과정 · LEADERSHIP CODE</span>
+                        <h2>리더십 코드</h2>
+                        <p>처음 리더의 자리에 선 수간호사가 나의 언어로 리더십을 이해하고, 현장에서 실제로 쓸 수 있는 역량을 만들어가는 과정입니다. 학습·이론·스킬이 하나의 흐름으로 연결됩니다. 코칭플러스가 현장에서 만난 수백 명의 간호리더를 통해 설계한 근거기반 성장 과정입니다.</p>
+                        <div class="prog-meta">
+                            <span class="meta-pill">⏱ 총 27시간 (3H × 9회기)</span>
+                            <span class="meta-pill">📅 격주 또는 월 1~2회</span>
+                            <span class="meta-pill">🖥 온·오프라인 병행</span>
+                            <span class="meta-pill">👥 신임 수간호사·파트장</span>
+                        </div>
+                    </div>
+
+                    <div class="part-overview-grid">
+                        <div class="part-card part-card--purple">
+                            <div class="part-badge">Part 1 · 1~3회기</div>
+                            <div class="part-title">역할과 사람을 해석하는 리더의 렌즈 인식하기</div>
+                            <p class="part-desc">직업이 바뀌었다는 것을 이해하고 나와 구성원을 새롭게 보기</p>
+                        </div>
+                        <div class="part-card part-card--green">
+                            <div class="part-badge">Part 2 · 4~6회기</div>
+                            <div class="part-title">오늘부터 쓰는 현장 대화 스킬</div>
+                            <p class="part-desc">원온원·면담·피드백을 직접 설계하고 연습하기</p>
+                        </div>
+                        <div class="part-card part-card--beige">
+                            <div class="part-badge">Part 3 · 7~9회기</div>
+                            <div class="part-title">파워·관계·어젠다</div>
+                            <p class="part-desc">영향력·신뢰·방향성으로 리더십을 완성하기</p>
+                        </div>
+                    </div>
+
+                    <section class="curriculum">
+                        <div class="prog-section-label">CURRICULUM</div>
+                        <h2 class="prog-section-title">9회기 커리큘럼</h2>
+                        <div class="part-header part-header--purple">Part 1  역할과 사람을 해석하는 리더의 렌즈 인식하기</div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">1</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">직업이 바뀌었다</div><div class="session-quote">"열심히 하고 있는데, 제대로 하고 있는 건지 모르겠다"</div><p class="session-desc">발령장 한 장이 바꿔놓은 것들. 직급이 오른 것이 아니라 하는 일의 본질이 달라졌다는 것, 이 인식이 출발점입니다. 나는 지금 전환기의 어디쯤 있는가?</p><div class="session-tags"><span class="stag">역할 전환 인식</span><span class="stag">변화 vs 전환</span><span class="stag">발달 심리학</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">2</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">리더의 렌즈 — 관점이 결과를 바꾼다</div><div class="session-quote">"같은 상황인데 왜 나만 이렇게 힘든 것 같을까?"</div><p class="session-desc">같은 사건도 리더가 어떻게 해석하느냐에 따라 전혀 다른 결과로 이어집니다. '배우는 리더'의 태도가 나 자신과 팀 전체를 어떻게 바꾸는지 탐색합니다.</p><div class="session-tags"><span class="stag">성장 마인드셋</span><span class="stag">관점 전환</span><span class="stag">사례 실습</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">3</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">구성원을 새롭게 보는 눈</div><div class="session-quote">"왜 저 사람은 저렇게 행동하는 걸까?"</div><p class="session-desc">구성원은 지금의 이슈만 들고 오는 것이 아닙니다. 각자의 경력 단계와 삶의 맥락을 함께 들고 옵니다. 사람을 다르게 이해하면, 대화의 방향도 달라집니다.</p><div class="session-tags"><span class="stag">구성원 이해</span><span class="stag">경력 발달 단계</span><span class="stag">DISCplus 성격 관점</span></div></div></div>
+                        <div class="part-header part-header--green">Part 2  오늘부터 쓰는 현장 대화 스킬</div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">4</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">원온원 — 1:1 면담을 설계하다</div><div class="session-quote">"면담을 하고 나면 왜 이렇게 찜찜한 걸까?"</div><p class="session-desc">원온원은 문제 해결의 시간이 아닙니다. 구성원이 "리더가 나를 어떤 사람으로 보고 있는가"를 느끼는 시간입니다. 효과적인 면담을 설계하는 4가지 질문을 익힙니다.</p><div class="session-tags"><span class="stag">원온원 설계</span><span class="stag">면담 4가지 질문</span><span class="stag">실습</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">5</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">대화 키트 1 — 나부터 솔직하게, 상대를 깊이 듣기</div><div class="session-quote">"하고 싶은 말은 있는데, 어떻게 꺼내야 할지 모르겠다"</div><p class="session-desc">자기개방 공식으로 상처 없이 솔직하게 말하는 연습. 빙산 모델로 상대의 말 뒤에 있는 감정과 욕구를 읽는 연습. 리더의 말 한 마디가 달라집니다.</p><div class="session-tags"><span class="stag">자기개방 공식</span><span class="stag">빙산 모델</span><span class="stag">경청·공감 실습</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">6</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">대화 키트 2 — 갈등 대화와 성장 피드백</div><div class="session-quote">"피드백을 줬는데 관계만 멀어진 것 같다"</div><p class="session-desc">갈등을 회피하지 않고 대화로 전환하는 방법. 성장 마인드셋 기반 피드백으로 구성원이 스스로 답을 찾게 하는 GROW 대화 프로세스를 실습합니다.</p><div class="session-tags"><span class="stag">갈등 대화</span><span class="stag">성장 피드백</span><span class="stag">GROW 프로세스</span></div></div></div>
+                        <div class="part-header part-header--beige">Part 3  파워·관계·어젠다</div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">7</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">파워 — 직위가 아닌 영향력으로</div><div class="session-quote">"내가 말하면 다들 따르는데, 이게 리더십인 걸까?"</div><p class="session-desc">직책과 함께 오는 파워는 사람을 '따르게' 하지만, 영향력은 '따르고 싶게' 만듭니다. 두 가지의 차이가 어떤 부서 분위기를 만드는지 탐색합니다.</p><div class="session-tags"><span class="stag">포지션 파워</span><span class="stag">퍼스널 파워</span><span class="stag">영향력 설계</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">8</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">관계 — 신뢰를 구조로 만든다</div><div class="session-quote">"구성원과 가까워지면 리더십이 흔들리는 것 아닐까?"</div><p class="session-desc">리더가 되는 순간 관계의 수와 질이 동시에 달라집니다. 신뢰는 감정이 아니라 구조입니다. 수십 명의 구성원과 신뢰를 유지하는 리더의 3가지 관계 모드를 배웁니다.</p><div class="session-tags"><span class="stag">신뢰 설계</span><span class="stag">3가지 관계 모드</span><span class="stag">심리적 안전감</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">9</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">어젠다 — 나만의 리더십 코드를 완성하다</div><div class="session-quote">"나는 어떤 부서를 만들고 싶은가?"</div><p class="session-desc">To-do list에 매몰되면 리더십은 관리에 머뭅니다. 9회기 여정을 통해 나의 가치와 철학에서 출발하는 어젠다를 세우고, 나만의 리더십 코드를 완성합니다.</p><div class="session-tags"><span class="stag">어젠다 설정</span><span class="stag">리더십 철학</span><span class="stag">실천 계획 수립</span></div></div></div>
+                    </section>
+
+                    <section class="course-info">
+                        <div class="prog-section-label">COURSE INFO</div>
+                        <h2 class="prog-section-title">과정 안내</h2>
+                        <div class="info-table">
+                            <div class="info-row"><div class="info-label">교육 시간</div><div class="info-value">총 27시간 (3시간 × 9회기)</div></div>
+                            <div class="info-row"><div class="info-label">대상</div><div class="info-value">신임 수간호사·파트장 (발령 후 2년 이내 권장)</div></div>
+                            <div class="info-row"><div class="info-label">진행 방식</div><div class="info-value">강의 + 성찰 질문 + 현장 연결 실습 (온·오프라인 협의)</div></div>
+                            <div class="info-row"><div class="info-label">교재</div><div class="info-value">코칭플러스 자체 개발 교재 제공</div></div>
+                            <div class="info-row"><div class="info-label">신청</div><div class="info-value">기관 단위 또는 개인 신청 — 문의 후 일정 협의</div></div>
+                        </div>
+                        <div class="apply-banner"><div><div class="apply-banner-title">과정 신청·일정 문의</div><div class="apply-banner-desc">기관 맞춤 설계 가능·회기 수와 일정은 협의 조율</div></div><a href="#" class="apply-btn">신청·문의하기 →</a></div>
+                    </section>
+                </div>
+
+                <div class="sub-detail" id="prog-flourish">
+                    <div class="prog-hero">
+                        <span class="prog-badge">팀장 리더십 과정 · LEADERSHIP FLOURISH</span>
+                        <h2>리더십 플로리쉬</h2>
+                        <p>좋은 리더십은 나에서 시작해 팀의 문화로 완성됩니다. 리더로서의 관점과 역량을 심화하고, 함께 일하고 싶은 팀을 만들어가는 과정입니다.</p>
+                        <div class="prog-meta"><span class="meta-pill">⏱ 총 27시간 (3H × 9회기)</span><span class="meta-pill">📅 격주 또는 월 1~2회</span><span class="meta-pill">🖥 온·오프라인 병행</span><span class="meta-pill">👥 간호팀장·경력 리더</span></div>
+                    </div>
+                    <div class="part-overview-grid">
+                        <div class="part-card part-card--green"><div class="part-badge">Part 1 · 1~3회기</div><div class="part-title">리더십 업그레이드</div><p class="part-desc">리더십 입문과 3가지 역량으로 나만의 성장 지도 그리기</p></div>
+                        <div class="part-card part-card--beige"><div class="part-badge">Part 2 · 4~6회기</div><div class="part-title">동기·강점 활용하기</div><p class="part-desc">구성원 각자의 에너지 원천을 발견하고 이끌기</p></div>
+                        <div class="part-card part-card--purple"><div class="part-badge">Part 3 · 7~9회기</div><div class="part-title">팀 &amp; 조직문화</div><p class="part-desc">함께 일하고 싶은 팀은 어떻게 만들어지는가</p></div>
+                    </div>
+                    <section class="curriculum">
+                        <div class="prog-section-label">CURRICULUM</div><h2 class="prog-section-title">9회기 커리큘럼</h2>
+                        <div class="part-header part-header--green">Part 1  리더십 업그레이드 — 리더십 입문과 3가지 역량</div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">1</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">나는 어떤 리더를 꿈꾸는가</div><div class="session-quote">→ 리더십 입문·나만의 리더십 정의 만들기</div><p class="session-desc">리더십에는 수십 가지 정의가 있습니다. 다양한 리더십 이론을 돌아보며 지금의 나와 가장 잘 맞는 리더십의 언어를 찾아봅니다. 이론을 배우는 것이 아니라 나의 리더십 철학을 만들어가는 시간입니다.</p><div class="session-tags"><span class="stag">리더십 입문</span><span class="stag">리더십 정의의 탐색</span><span class="stag">철학 수립</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">2</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">경험이 지혜가 되는 순간</div><div class="session-quote">→ 성장 마인드셋·배우는 리더의 태도</div><p class="session-desc">경험이 많을수록 지혜로워지기도 하고, 반대로 고집이 생기기도 합니다. 같은 현장에서도 계속 배우는 리더와 멈추는 리더의 차이는 무엇인지 탐색하고, 배움을 선택하는 리더의 태도를 실습합니다.</p><div class="session-tags"><span class="stag">성장 마인드셋</span><span class="stag">경험의 함정</span><span class="stag">성찰 실습</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">3</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">나의 리더십 역량 지도</div><div class="session-quote">→ Katz 3 Skill·직급에 따라 달라지는 역량의 비중</div><p class="session-desc">기술적 역량·대인 역량·개념적 역량. 세 가지 관점으로 지금 내가 잘 쓰고 있는 역량과 더 키울 수 있는 영역을 살펴봅니다. 팀장급에서 가장 중요해지는 역량은 무엇인지 함께 그려봅니다.</p><div class="session-tags"><span class="stag">리더십 3역량</span><span class="stag">자기진단</span><span class="stag">성장 방향 설계</span></div></div></div>
+                        <div class="part-header part-header--beige">Part 2  동기·강점 활용하기 — 구성원 각자의 에너지 원천 찾기</div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">4</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">구성원이 움직이는 이유</div><div class="session-quote">→ 동기·위생 요인·개인별 동기 탐색</div><p class="session-desc">칭찬이 동기를 높이는 사람이 있는가 하면, 성장 기회나 의미 있는 역할이 더 중요한 사람도 있습니다. 구성원 한 명 한 명이 무엇 때문에 일하는지 발견하면, 이끄는 방식도 달라집니다.</p><div class="session-tags"><span class="stag">동기·위생 요인</span><span class="stag">개인별 동기 탐색</span><span class="stag">실습</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">5</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">강점에서 출발하는 리더십</div><div class="session-quote">→ DISCplus·강점 기반 역할 연결</div><p class="session-desc">강점 기반 리더십은 약점을 무시하는 것이 아니라, 각자가 자연스럽게 잘하는 것에서 출발하는 방식입니다. 나의 강점과 구성원 각자의 강점을 발견하고 역할에 연결하는 방법을 탐색합니다.</p><div class="session-tags"><span class="stag">강점 기반 리더십</span><span class="stag">DISCplus 활용</span><span class="stag">역할 연결</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">6</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">상황에 맞게 이끄는 리더</div><div class="session-quote">→ 상황대응 리더십·Skill × Will 매트릭스</div><p class="session-desc">신입 간호사와 10년 차 간호사에게 같은 방식으로 이끄는 것이 오히려 부작용을 낳을 수 있습니다. 구성원의 능력과 의지에 따라 지시·코칭·지원·위임을 유연하게 선택하는 방법을 현장 사례로 실습합니다.</p><div class="session-tags"><span class="stag">상황대응 리더십</span><span class="stag">Skill × Will</span><span class="stag">사례 실습</span></div></div></div>
+                        <div class="part-header part-header--purple">Part 3  팀 &amp; 조직문화 — 함께 일하고 싶은 팀은 어떻게 만들어지는가</div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">7</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">팀이 성장하며 거치는 5가지 단계</div><div class="session-quote">→ Tuckman 모델·지금 우리 팀의 위치 파악</div><p class="session-desc">분위기가 좋은 팀과 팀워크가 좋은 팀은 다릅니다. 팀이 성장하며 거치는 형성기·격동기·규범기·성과기의 흐름을 이해하면, 지금 우리 팀에서 일어나는 일들이 다르게 보입니다. 단계마다 리더가 해야 할 일도 달라집니다.</p><div class="session-tags"><span class="stag">팀 발달 5단계</span><span class="stag">갈등은 성장의 신호</span><span class="stag">팀 진단</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">8</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">심리적 안전감과 좋은 팀의 조건</div><div class="session-quote">→ 심리적 안전감·갈등을 다루는 리더의 관점</div><p class="session-desc">갈등이 없는 팀이 건강한 팀이 아닙니다. 솔직하게 말할 수 있고, 실수를 숨기지 않아도 되는 팀이 더 단단합니다. 내가 생각하는 좋은 팀의 모습을 그리고, 리더의 일상적 태도가 문화가 되는 방식을 탐색합니다.</p><div class="session-tags"><span class="stag">심리적 안전감</span><span class="stag">조용한 팀 vs 소통하는 팀</span><span class="stag">성약식</span></div></div></div>
+                        <div class="session-item"><div class="session-num-wrap"><span class="session-num">9</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">리더 혼자 만드는 팀은 없다</div><div class="session-quote">→ 긍정 리더십·위임·파트너십</div><p class="session-desc">팀을 혼자 끌어가는 리더는 오래가지 못합니다. 구성원 각자가 자신의 역할에서 꽃피울 수 있도록 위임하고 협력하는 리더십. 9회기 여정을 마무리하며 내가 만들고 싶은 팀의 그림을 완성합니다.</p><div class="session-tags"><span class="stag">긍정 리더십</span><span class="stag">위임과 파트너십</span><span class="stag">통합 실습</span></div></div></div>
+                    </section>
+                    <section class="course-info"><div class="prog-section-label">COURSE INFO</div><h2 class="prog-section-title">과정 안내</h2><div class="info-table"><div class="info-row"><div class="info-label">교육 시간</div><div class="info-value">총 27시간 (3시간 × 9회기)</div></div><div class="info-row"><div class="info-label">대상</div><div class="info-value">간호팀장·경력 리더 (리더 경험 2년 이상 권장)</div></div><div class="info-row"><div class="info-label">진행 방식</div><div class="info-value">사례 토론 + 현장 적용 실습 + 실행 과제 점검 (온·오프라인 협의)</div></div><div class="info-row"><div class="info-label">신청</div><div class="info-value">기관 단위 또는 개인 신청 — 문의 후 일정 협의</div></div></div><div class="apply-banner"><div><div class="apply-banner-title">과정 신청·일정 문의</div><div class="apply-banner-desc">기관 맞춤 설계 가능·회기 수와 일정은 협의 조율</div></div><a href="#" class="apply-btn">신청·문의하기 →</a></div></section>
+                </div>
+            </div>
+        </section>
+
+        <section class="prog-panel" id="panel-coaching" aria-label="코칭 기초 과정">
+            <div class="prog-inner">
+                <div class="prog-hero">
+                    <span class="prog-badge">코칭 과정 · N&amp;H COACHING</span>
+                    <h2>코칭 기초 과정</h2>
+                    <p>대화의 질이 달라지면 관계와 성과도 달라집니다. 코칭의 철학과 인간관을 이해하고, 경청·질문·피드백의 핵심 스킬을 익혀 현장에서 바로 쓸 수 있는 코칭 대화를 설계하는 기초 과정입니다.</p>
+                    <div class="prog-meta"><span class="meta-pill">⏱ 총 24시간 (3H × 8회기)</span><span class="meta-pill">📅 격주 또는 월 1~2회</span><span class="meta-pill">🖥 온·오프라인 병행</span><span class="meta-pill">👥 리더·코치·교육 담당자</span></div>
+                </div>
+                <div class="part-overview-grid">
+                    <div class="part-card part-card--purple"><div class="part-badge">Part 1 · 1~2회기</div><div class="part-title">코칭 이해하기</div><p class="part-desc">코칭의 철학과 인간관, 대화를 바꾸는 관점</p></div>
+                    <div class="part-card part-card--beige"><div class="part-badge">Part 2 · 3~5회기</div><div class="part-title">3가지 핵심 스킬</div><p class="part-desc">코칭적 경청·가능성을 여는 질문·성장마인드셋 피드백</p></div>
+                    <div class="part-card part-card--green"><div class="part-badge">Part 3 · 6~8회기</div><div class="part-title">코칭 대화 실습</div><p class="part-desc">GROW 모델로 실제 대화를 설계하고 현장에 적용하기</p></div>
+                </div>
+                <section class="curriculum">
+                    <div class="prog-section-label">CURRICULUM</div><h2 class="prog-section-title">8회기 커리큘럼</h2>
+                    <div class="part-header part-header--purple">Part 1  코칭 이해하기 — 철학과 인간관</div>
+                    <div class="session-item"><div class="session-num-wrap"><span class="session-num">1</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">코칭이란 무엇인가</div><div class="session-quote">→ 코칭의 정의·철학·코칭 vs 티칭 vs 상담</div><p class="session-desc">코칭은 답을 주는 것이 아니라 스스로 답을 찾도록 돕는 대화입니다. 코칭의 핵심 철학인 "모든 사람에게는 가능성이 있다"는 명제를 출발점으로, 코칭이 다른 대화 방식과 어떻게 다른지 탐색합니다.</p><div class="session-tags"><span class="stag">코칭 정의</span><span class="stag">코칭 철학</span><span class="stag">긍정심리학</span></div></div></div>
+                    <div class="session-item"><div class="session-num-wrap"><span class="session-num">2</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">대화를 바꾸는 관점</div><div class="session-quote">→ 코칭 마인드셋·의도와 스킬·코칭 인간관</div><p class="session-desc">코칭에서 스킬보다 더 중요한 것은 의도입니다. "왜 이 사람이 그러한가"보다 "이 사람은 무엇을 원하는가"로 초점을 옮기는 것이 코칭 대화의 시작입니다. 가능성과 강점을 보는 관점을 실습합니다.</p><div class="session-tags"><span class="stag">코칭 마인드셋</span><span class="stag">가능성 중심</span><span class="stag">강점 관점</span></div></div></div>
+                    <div class="part-header part-header--beige">Part 2  3가지 핵심 스킬 — 경청·질문·피드백</div>
+                    <div class="session-item"><div class="session-num-wrap"><span class="session-num">3</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">코칭적 경청</div><div class="session-quote">→ 경청 반응·감정피자·내용·심정·욕구 읽기</div><p class="session-desc">상대방이 말하는 것과 말하지 않는 것을 함께 듣는 것이 코칭적 경청입니다. 내용·심정·욕구의 세 층으로 상대를 이해하는 경청 반응을 익히고, 사람마다 다른 듣는 스타일을 탐색합니다.</p><div class="session-tags"><span class="stag">경청 반응</span><span class="stag">감정피자</span><span class="stag">경청 스타일</span></div></div></div>
+                    <div class="session-item"><div class="session-num-wrap"><span class="session-num">4</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">가능성을 여는 질문</div><div class="session-quote">→ 열린 질문·미래지향적 질문·관점 전환</div><p class="session-desc">좋은 질문은 상대의 답을 유도하지 않고, 스스로 생각하게 만듭니다. '왜'보다 '어떻게', 과거보다 미래, 문제보다 가능성으로 향하는 코칭 질문의 원리와 실습 방법을 배웁니다.</p><div class="session-tags"><span class="stag">코칭 질문</span><span class="stag">어떻게 질문</span><span class="stag">관점 전환</span></div></div></div>
+                    <div class="session-item"><div class="session-num-wrap"><span class="session-num">5</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">성장마인드셋 피드백·피드포워드</div><div class="session-quote">→ 성장마인드셋 피드백·피드포워드·코칭과 티칭의 조합</div><p class="session-desc">피드백은 과거의 잘못을 짚는 것이 아니라 앞으로의 성장을 향하는 언어입니다. 성장마인드셋을 기반으로 한 피드백 방식과 미래지향적인 피드포워드를 함께 익히고, 코칭과 티칭을 상황에 맞게 조합하는 실습을 합니다.</p><div class="session-tags"><span class="stag">성장마인드셋 피드백</span><span class="stag">피드포워드</span><span class="stag">코칭·티칭 조합</span></div></div></div>
+                    <div class="part-header part-header--green">Part 3  코칭 대화 실습 — GROW 모델과 현장 적용</div>
+                    <div class="session-item"><div class="session-num-wrap"><span class="session-num">6</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">GROW 코칭 대화 모델</div><div class="session-quote">→ Goal·Reality·Options·Will·단계별 질문</div><p class="session-desc">목표 설정에서 실천 의지 확인까지, 코칭 대화를 구조적으로 이끄는 GROW 모델을 배웁니다. 각 단계에서 쓸 수 있는 질문들을 익히고, 실제 대화 흐름을 설계해봅니다.</p><div class="session-tags"><span class="stag">GROW 모델</span><span class="stag">단계별 질문</span><span class="stag">대화 설계</span></div></div></div>
+                    <div class="session-item"><div class="session-num-wrap"><span class="session-num">7</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">현장 코칭 대화 실습 1</div><div class="session-quote">→ 업무 지시·면담 상황·롤플레이</div><p class="session-desc">업무 지시와 피드백 상황에서 코칭 대화를 직접 실습합니다. 실제로 일어나는 현장 시나리오를 바탕으로 경청·질문·GROW를 통합적으로 써보고 피드백을 나눕니다.</p><div class="session-tags"><span class="stag">롤플레이</span><span class="stag">업무 상황 적용</span><span class="stag">피드백 나눔</span></div></div></div>
+                    <div class="session-item"><div class="session-num-wrap"><span class="session-num">8</span><span class="session-label">회기</span></div><div class="session-body"><div class="session-title">현장 코칭 대화 실습 2·통합</div><div class="session-quote">→ 나만의 코칭 대화·실천 계획·전체 통합</div><p class="session-desc">8회기 여정을 마무리합니다. 나만의 코칭 대화 패턴을 정리하고, 현장에서 바로 적용할 수 있는 실천 계획을 수립합니다. 동료 실습과 피드백으로 과정 전체를 통합합니다.</p><div class="session-tags"><span class="stag">통합 실습</span><span class="stag">나만의 코칭 스타일</span><span class="stag">실천 계획</span></div></div></div>
+                </section>
+                <section class="course-info"><div class="prog-section-label">COURSE INFO</div><h2 class="prog-section-title">과정 안내</h2><div class="info-table"><div class="info-row"><div class="info-label">교육 시간</div><div class="info-value">총 24시간 (3시간 × 8회기)</div></div><div class="info-row"><div class="info-label">대상</div><div class="info-value">리더·코치·교육 담당자·코칭 대화에 관심 있는 누구나</div></div><div class="info-row"><div class="info-label">진행 방식</div><div class="info-value">강의 + 실습 + 롤플레이 + 피드백 나눔 (온·오프라인 병행)</div></div><div class="info-row"><div class="info-label">신청</div><div class="info-value">개인 또는 기관 단위 신청 — 문의 후 일정 협의</div></div></div><div class="apply-banner"><div><div class="apply-banner-title">과정 신청·일정 문의</div><div class="apply-banner-desc">기관 맞춤 설계 가능·회기 수와 일정은 협의 조율</div></div><a href="#" class="apply-btn">신청·문의하기 →</a></div></section>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-label="문의 안내">
+            <div class="cta-inner">
+                <p class="cta-text">프로그램·특강 문의 및 커스터마이징 상담은 이메일로 연락해 주세요.</p>
+                <a class="cta-btn" href="mailto:discplus2010@naver.com">이메일로 문의하기</a>
             </div>
         </section>
     </main>
@@ -401,32 +392,36 @@
         </div>
     </footer>
     <script>
-        const accordions = document.querySelectorAll('[data-accordion]');
+        const tabButtons = document.querySelectorAll('.prog-tab-btn');
+        const panels = document.querySelectorAll('.prog-panel');
 
-        accordions.forEach((card) => {
-            const button = card.querySelector('.prog-btn');
-            const detail = card.querySelector('.prog-detail');
-
+        tabButtons.forEach((button) => {
             button.addEventListener('click', () => {
-                const isOpen = button.getAttribute('aria-expanded') === 'true';
+                const panelId = `panel-${button.dataset.panel}`;
 
-                button.setAttribute('aria-expanded', String(!isOpen));
-                detail.hidden = isOpen;
+                tabButtons.forEach((item) => item.classList.remove('active'));
+                panels.forEach((panel) => panel.classList.remove('active'));
+
+                button.classList.add('active');
+                document.getElementById(panelId).classList.add('active');
+            });
+        });
+
+        const subCards = document.querySelectorAll('.sub-prog-selector .sub-card');
+        const codePanel = document.getElementById('prog-code');
+        const flourishPanel = document.getElementById('prog-flourish');
+
+        subCards.forEach((card) => {
+            card.addEventListener('click', () => {
+                subCards.forEach((item) => item.classList.remove('active'));
+                card.classList.add('active');
+
+                const isCode = card.dataset.subProgram === 'code';
+                codePanel.classList.toggle('active', isCode);
+                flourishPanel.classList.toggle('active', !isCode);
             });
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
