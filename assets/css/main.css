@@ -167,6 +167,8 @@ body {
     color: var(--text-black);
     line-height: 1.6;
     background-color: var(--bg-page);
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 a {
@@ -246,6 +248,13 @@ nav a {
 
 nav a:hover {
     color: var(--brand-standard);
+}
+
+nav a.active {
+    color: var(--brand-standard);
+    font-weight: 700;
+    border-bottom: 2px solid var(--brand-standard);
+    padding-bottom: 2px;
 }
 
 main {
@@ -414,38 +423,108 @@ footer {
     }
 }
 
+/* 햄버거 버튼 — 넓은 화면에서 숨김 */
+.menu-toggle {
+    display: none;
+}
+
+.hamburger-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--brand-standard);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+    transform-origin: center;
+}
+
 @media (max-width: 768px) {
+    /* 헤더: 가로 레이아웃, 로고 좌 / 햄버거 우 */
     .header-container {
+        flex-direction: row;
+        gap: 0;
+        align-items: center;
+    }
+
+    /* logo-main 유지, logo-symbol 숨김 */
+    header .logo .logo-main { display: block; }
+    header .logo .logo-symbol { display: none; }
+
+    /* 가로 내비 → 모바일 드롭다운 */
+    header nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-surface);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition:
+            max-height 0.25s ease,
+            opacity 0.22s ease,
+            transform 0.22s ease;
+        z-index: 98;
+    }
+
+    header nav.nav-open {
+        max-height: 400px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    header nav ul {
+        display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 0;
+        padding: 6px 0 10px;
+        font-size: unset;
     }
 
-    nav ul {
-        gap: 15px;
-        font-size: 15px;
+    header nav a {
+        display: block;
+        padding: 12px clamp(14px, 4vw, 22px);
+        font-size: 16px;
     }
 
-    .page-header h1 {
-        font-size: 42px;
+    header nav a.active {
+        border-bottom: none;
+        padding-bottom: 12px;
     }
 
-    .page-header p {
-        font-size: 24px;
+    /* 햄버거 버튼 */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        margin-left: auto;
+        flex-shrink: 0;
     }
 
-    .logo img {
-        height: 30px;
-        margin-top: 2px;
-        transform: translateY(1px);
+    /* 열림 상태: ☰ → ✕ */
+    .menu-toggle.is-open .hamburger-bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.is-open .hamburger-bar:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    .menu-toggle.is-open .hamburger-bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
     }
 
-    header .logo .logo-main {
-        display: none;
-    }
-
-    header .logo .logo-symbol {
-        display: inline-block;
-    }
+    .page-header h1 { font-size: 42px; }
+    .page-header p { font-size: 24px; }
 }
 
 /* Home page */
@@ -758,6 +837,9 @@ footer {
         min-height: 300px;
         padding: 0;
         margin: 24px 0 0;
+        aspect-ratio: auto;
+        background-position: left center;
+        overflow: hidden;
     }
 
     .home-hero-content {
@@ -858,6 +940,8 @@ footer {
     padding-right: max(2rem, calc((100% - 1040px) / 2 + 2rem));
     border-radius: 8px;
     margin: 24px 0 0;
+    overflow: hidden;
+    position: relative;
 }
 
 .cm-page-header h1 {
@@ -1053,7 +1137,7 @@ footer {
 .stage-section {
     max-width: 1040px;
     margin: 0 auto;
-    padding: 0 0 1rem;
+    padding: 0;
     background: transparent;
     border-radius: 10px;
     overflow: hidden;
@@ -1081,7 +1165,7 @@ footer {
 }
 
 .stage-intro {
-    border-radius: 8px 8px 0 0;
+    border-radius: 0;
     padding: 1.35rem 1.5rem;
     margin-bottom: 0;
     border: none;
@@ -1241,6 +1325,10 @@ footer {
 
 .model-card:last-child {
     border-bottom: none;
+}
+
+.stage-section .model-list {
+    padding-bottom: 1rem;
 }
 
 .model-card-top {
@@ -1403,6 +1491,9 @@ a.course-tag:hover {
     .cm-page-header {
         min-height: 280px;
         padding: 2rem 1.3rem;
+        aspect-ratio: auto;
+        background-position: left center;
+        overflow: hidden;
     }
 
     .cm-page-header h1 {
@@ -1581,19 +1672,20 @@ a.course-tag:hover {
 }
 
 .book-node {
-    max-width: 1040px;
-    margin: 0 auto 18px;
+    width: 100%;
+    max-width: none;
+    margin: 0 0 18px;
 }
 
 .book-panel {
     display: grid;
-    grid-template-columns: minmax(170px, 230px) 1fr;
-    gap: 28px;
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 36px;
     align-items: center;
     background: var(--bg-surface);
     border: 1px solid var(--border-light);
     border-radius: 8px;
-    padding: 24px;
+    padding: 32px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
@@ -1605,7 +1697,7 @@ a.course-tag:hover {
     display: block;
     justify-self: center;
     width: 100%;
-    max-width: 230px;
+    max-width: 300px;
 }
 
 .book-cover {
@@ -1617,21 +1709,21 @@ a.course-tag:hover {
 }
 
 .book-content h2 {
-    font-size: 2.08rem;
+    font-size: 2.28rem;
     color: var(--brand-standard);
     line-height: 1.35;
     margin-bottom: 14px;
 }
 
 .book-subtitle {
-    font-size: 1.28rem;
+    font-size: 1.34rem;
     font-weight: 700;
     color: var(--text-body);
     margin-bottom: 18px;
 }
 
 .book-content p {
-    font-size: 1.02rem;
+    font-size: 1.12rem;
     color: var(--text-body);
     line-height: 1.8;
     margin-top: 0;
@@ -1645,15 +1737,13 @@ a.course-tag:hover {
 }
 
 .book-tags span {
-    display: inline-flex;
-    align-items: center;
-    min-height: 30px;
+    display: inline-block;
     padding: 5px 10px;
-    border-radius: 4px;
-    background: var(--bg-soft);
+    border-radius: 20px;
+    background: var(--bg-surface);
     color: var(--brand-standard);
-    font-size: 0.86rem;
-    font-weight: 700;
+    border: 1px solid var(--brand-border);
+    font-size: 0.94rem;
 }
 
 .book-actions {
@@ -1670,15 +1760,29 @@ a.course-tag:hover {
 .book-actions .btn {
     padding: 10px 22px;
     font-size: 15px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+}
+
+.book-actions .btn-primary {
+    background-color: #1380ec;
+    border-color: #1070d0;
+}
+
+.book-actions .btn-primary:hover {
+    background-color: #0080ff;
+    border-color: #006be0;
 }
 
 .book-actions .btn-aladin {
-    background-color: #bf5b7f;
+    background-color: #e12b8a;
     color: var(--text-white);
+    border-color: #c42078;
 }
 
 .book-actions .btn-aladin:hover {
-    background-color: var(--brand-magenta);
+    background-color: #f21c8c;
+    border-color: #d4107a;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -1693,6 +1797,9 @@ a.course-tag:hover {
     .book-hero {
         min-height: 280px;
         padding: 0;
+        aspect-ratio: auto;
+        background-position: left center;
+        overflow: hidden;
     }
 
     .book-hero-content {
@@ -1872,8 +1979,8 @@ a.course-tag:hover {
 }
 
 .coach-img {
-    width: 108px;
-    height: 108px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     background: var(--bg-soft);
     background-size: cover;
@@ -1904,20 +2011,22 @@ a.course-tag:hover {
     justify-content: center;
     padding: 3px 10px;
     border-radius: 20px;
-    background: #7fcf76;
+    background: #1cbc66;
     color: var(--text-white);
-    border: 1px solid #69bb61;
+    border: 1px solid #18a057;
     font-size: 1.14rem;
     font-weight: 700;
     line-height: 1.25;
     text-decoration: none;
-    transition: background 0.16s ease, border-color 0.16s ease;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .coach-blog-btn:hover,
 .coach-blog-btn:focus-visible {
-    background: #6ac361;
-    border-color: #55aa4d;
+    background: #03c75a;
+    border-color: #02b050;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .coach-role {
@@ -2166,8 +2275,20 @@ a.course-tag:hover {
         font-size: 1.55rem;
     }
 
+    /* 사진 오른쪽에 이름/버튼 → 이력 → 소개 가로 배치 유지 */
     .coach-card {
-        flex-direction: column;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .coach-img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .coach-blog-btn {
+        font-size: 0.88rem;
+        padding: 2px 8px;
     }
 
     .focus-card-content {
@@ -2772,6 +2893,9 @@ a.course-tag:hover {
             .pg-header {
                 min-height: 280px;
                 padding: 2rem 1.3rem;
+                aspect-ratio: auto;
+                background-position: left center;
+                overflow: hidden;
             }
 
             .pg-header h1 {
@@ -3703,8 +3827,7 @@ a.course-tag:hover {
 .about-section,
 .home-page-links,
 .prog-tabs-section,
-.prog-panel,
-.book-path {
+.prog-panel {
     padding-left: 2rem;
     padding-right: 2rem;
 }
@@ -3720,8 +3843,7 @@ a.course-tag:hover {
 .programs-intro,
 .programs-accordion,
 .prog-tabs,
-.prog-inner,
-.book-node {
+.prog-inner {
     width: 100%;
     max-width: none;
     margin-left: 0;
@@ -3730,32 +3852,6 @@ a.course-tag:hover {
 
 .stage-section + .stage-section {
     margin-top: 2rem;
-}
-
-.book-panel {
-    grid-template-columns: minmax(220px, 300px) 1fr;
-    gap: 36px;
-    padding: 32px;
-}
-
-.book-cover-link {
-    max-width: 300px;
-}
-
-.book-content h2 {
-    font-size: 2.28rem;
-}
-
-.book-subtitle {
-    font-size: 1.34rem;
-}
-
-.book-content p {
-    font-size: 1.12rem;
-}
-
-.book-tags span {
-    font-size: 0.95rem;
 }
 
 @media (max-width: 900px) {
@@ -3963,8 +4059,8 @@ a.course-tag:hover {
     width: auto;
     margin-left: 2rem;
     margin-right: 2rem;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -4343,11 +4439,6 @@ a.course-tag:hover {
 .prog-panel .sub-prog-selector {
     align-items: stretch;
     margin: 1.55rem 0 -2.5px;
-}
-
-.prog-tab-btn,
-.prog-panel .sub-card {
-    transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
 }
 
 .prog-tab-btn[data-panel="discplus"]:not(.active) .tab-title {
@@ -4888,11 +4979,6 @@ a.course-tag:hover {
     margin: 1.55rem 0 -2.5px;
 }
 
-.prog-tab-btn,
-.prog-panel .sub-card {
-    transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
-}
-
 .prog-tab-btn[data-panel="discplus"]:not(.active) .tab-title {
     color: var(--indigo-deep);
 }
@@ -5113,37 +5199,94 @@ a.course-tag:hover {
 }
 
 @media (max-width: 768px) {
+    /* ── 상위 탭: 전체 폭 채움, 스크롤 없음 ── */
     .prog-tabs {
-        overflow-x: auto;
+        overflow: visible !important;
         padding-bottom: 0;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        gap: 0 !important;
     }
 
     .prog-tab-btn {
-        min-width: 132px;
-        padding: 0.56rem 1.02rem 0.62rem;
+        flex: 1 1 0 !important;
+        min-width: 0;
+        margin: 0;
+        padding: clamp(0.35rem, 1.4vw, 0.5rem) clamp(0.3rem, 1.8vw, 0.8rem) !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-radius: 0 !important;
     }
 
+    .prog-tab-btn:first-child { border-radius: 8px 0 0 0 !important; }
+    .prog-tab-btn:last-child  { border-radius: 0 8px 0 0 !important; }
+
     .prog-tab-btn .tab-title {
-        font-size: 1.16rem;
+        font-size: clamp(0.74rem, 2.6vw, 1rem);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* ── 하위 탭: 전체 폭 채움 ── */
+    .prog-panel .sub-prog-selector {
+        overflow: visible !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        gap: 0 !important;
+        margin: 1.2rem 0 -2.5px !important;
+        align-items: flex-end;
     }
 
     .prog-panel .sub-card {
-        min-width: 176px;
+        flex: 1 1 0 !important;
+        min-width: 0;
+        margin: 0;
+        padding: clamp(0.35rem, 1.4vw, 0.5rem) clamp(0.3rem, 1.8vw, 0.8rem) !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-radius: 0 !important;
     }
 
-    .prog-tab-btn:first-child,
-    .prog-tab-btn:last-child {
-        border-radius: 8px 8px 0 0;
+    .prog-panel .sub-card:first-child { border-radius: 8px 0 0 0 !important; }
+    .prog-panel .sub-card:last-child  { border-radius: 0 8px 0 0 !important; }
+
+    /* 배지 숨김 (좁은 탭에서 공간 확보) */
+    .prog-panel .sub-badge { display: none !important; }
+
+    .prog-panel .sub-title {
+        display: block;
+        font-size: clamp(0.74rem, 2.5vw, 1rem);
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    .top-tab-content {
+    /* ── 탭-콘텐츠 연결: 상단 라운딩 제거 ── */
+    .top-tab-content,
+    #panel-discplus .top-tab-content,
+    #panel-nursing .top-tab-content,
+    #panel-coaching .top-tab-content {
+        border-radius: 0 0 8px 8px !important;
         margin-top: 0;
+    }
+
+    .prog-panel .sub-detail.active > .top-tab-content:first-child,
+    #panel-discplus .sub-detail.active > .top-tab-content:first-child,
+    #panel-nursing .sub-detail.active > .top-tab-content:first-child,
+    #panel-coaching .sub-detail.active > .top-tab-content:first-child {
+        border-radius: 0 0 8px 8px !important;
     }
 
     .top-panel-head,
     .top-panel-body {
         padding-left: 1.2rem;
         padding-right: 1.2rem;
+    }
+
+    /* 특징 & 기대효과: 모바일 1열 */
+    .feat-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -5253,11 +5396,6 @@ a.course-tag:hover {
 .prog-panel .sub-prog-selector {
     align-items: stretch;
     margin: 1.55rem 0 -2.5px;
-}
-
-.prog-tab-btn,
-.prog-panel .sub-card {
-    transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
 }
 
 .prog-tab-btn[data-panel="discplus"]:not(.active) .tab-title {
@@ -6127,5 +6265,373 @@ a.course-tag:hover {
 
     .home-page-links {
         margin-bottom: 3.5rem;
+    }
+}
+
+/* Final fluid global spacing */
+:root {
+    --body-gutter-fluid: clamp(0rem, calc((100vw - 760px) / 12), 2rem);
+}
+
+main {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.header-container {
+    padding: 4px clamp(16px, 2.8vw, 24px);
+}
+
+.logo h1 {
+    padding: 4px 0;
+}
+
+.logo img {
+    height: 40px;
+}
+
+nav a {
+    font-size: 20px;
+}
+
+.home-focus,
+.about-section,
+.home-page-links,
+.prog-tabs-section,
+.prog-panel,
+.book-path,
+.flow-section,
+.lecture-filter-section,
+.lecture-categories,
+.inquiry-section {
+    padding-left: var(--body-gutter-fluid) !important;
+    padding-right: var(--body-gutter-fluid) !important;
+}
+
+.stage-section {
+    width: calc(100% - (var(--body-gutter-fluid) * 2)) !important;
+    margin-left: var(--body-gutter-fluid) !important;
+    margin-right: var(--body-gutter-fluid) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --body-gutter-fluid: clamp(0.75rem, 2.5vw, 1.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --body-gutter-fluid: 0.75rem;
+    }
+
+    .header-container {
+        padding: 4px clamp(12px, 3.5vw, 18px);
+    }
+
+    .logo img {
+        height: 32px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    :root {
+        --body-gutter-fluid: 0.5rem;
+    }
+}
+
+/* ════════════════════════════════════════════════════════
+   히어로 반응형 — 좁은 화면에서 왼쪽 기준 클리핑
+   (PC 기존 구성 유지, 모바일 전용)
+   ════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    /* 가로 스크롤 방지 */
+    html, body {
+        overflow-x: hidden;
+    }
+
+    /* 히어로 공통: aspect-ratio 해제 → min-height 기준,
+       배경 왼쪽 정렬 → 오른쪽이 자연스럽게 잘림,
+       overflow: hidden → 컨테이너 밖으로 삐져나오지 않음 */
+    .home-hero,
+    .cm-page-header,
+    .book-hero,
+    .pg-header {
+        aspect-ratio: auto !important;
+        background-position: left center !important;
+        overflow: hidden !important;
+    }
+}
+
+/* ════════════════════════════════════════════════════════
+   프로그램 탭 UI — 책갈피 디자인 최종 정리 v3
+   ════════════════════════════════════════════════════════ */
+
+/* 1. 전환 애니메이션 */
+.prog-tab-btn,
+.prog-panel .sub-card {
+    transition:
+        background 0.22s ease,
+        border-color 0.22s ease,
+        color 0.18s ease,
+        transform 0.15s ease;
+}
+
+/* 2. 상위 탭 — 모든 탭 위쪽만 라운딩
+      :first-child/:last-child 특이도를 같은 레벨로 재정의 */
+.prog-tab-btn,
+.prog-tab-btn:first-child,
+.prog-tab-btn:last-child {
+    border-radius: 8px 8px 0 0 !important;
+    border-bottom: none !important;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+.prog-tab-btn.active {
+    z-index: 4;
+}
+
+/* 3. 상위 탭 텍스트 잘림 방지 */
+.prog-tab-btn .tab-title,
+.prog-tab-btn .tab-sub {
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    word-break: keep-all;
+}
+
+/* 4. 상위 탭 바 — gap 0 (서로 붙이기) */
+.prog-tabs {
+    gap: 0 !important;
+}
+
+/* 5. 하위 탭 — 모든 탭 위쪽만 라운딩
+      column: DOM 순서 그대로 badge(위) → title(아래)
+      align-items: stretch → 오른쪽 공백 없이 전체 폭 채움 */
+.prog-panel .sub-card,
+.prog-panel .sub-card:first-child,
+.prog-panel .sub-card:last-child {
+    border-radius: 8px 8px 0 0 !important;
+    border-bottom: none !important;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+}
+.prog-panel .sub-card.active {
+    z-index: 3;
+}
+
+/* 6. 하위 탭 텍스트 */
+.prog-panel .sub-title {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: keep-all;
+}
+
+/* 7. 하위 탭 부제목(sub-badge) — 제목 위에 표시 (DOM 순서 그대로)
+      badge가 먼저(위), title이 아래 */
+.prog-panel .sub-badge {
+    display: block !important;
+    margin-bottom: 0.12rem;
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    white-space: normal;
+    word-break: keep-all;
+}
+.prog-panel .sub-card:not(.active) .sub-badge {
+    color: var(--text-muted);
+}
+.prog-panel .sub-card.active .sub-badge {
+    opacity: 0.85;
+}
+
+/* 8. 상세 제목 상자 — z-index (탭보다 시각적 앞에) */
+.top-tab-content {
+    position: relative;
+    z-index: 2;
+}
+.prog-panel .sub-detail.active > .prog-hero:first-child,
+.prog-panel .sub-detail.active > .top-tab-content:first-child {
+    position: relative;
+    z-index: 2;
+}
+
+/* 9. 상세 제목 상자 — PC border-radius
+      DISCplus(첫 번째 탭): 왼쪽 상단 플랫
+      nursing, coaching: 전체 상단 라운딩 */
+#panel-discplus .top-tab-content {
+    border-radius: 0 8px 8px 8px;
+}
+#panel-nursing .top-tab-content,
+#panel-coaching .top-tab-content {
+    border-radius: 8px;
+}
+
+/* 10. 서브 디테일 — PC border-radius
+       첫 번째 서브탭 active: 왼쪽 상단 플랫 */
+#prog-disc-basic.active > .prog-hero:first-child,
+#prog-disc-basic.active > .top-tab-content:first-child,
+#prog-flourish.active > .prog-hero:first-child,
+#prog-flourish.active > .top-tab-content:first-child,
+#prog-coaching-personal.active > .prog-hero:first-child,
+#prog-coaching-personal.active > .top-tab-content:first-child {
+    border-radius: 0 8px 8px 8px !important;
+}
+#prog-disc-ft.active > .prog-hero:first-child,
+#prog-disc-ft.active > .top-tab-content:first-child,
+#prog-code.active > .prog-hero:first-child,
+#prog-code.active > .top-tab-content:first-child,
+#prog-legend.active > .prog-hero:first-child,
+#prog-legend.active > .top-tab-content:first-child,
+#prog-coaching-nh.active > .prog-hero:first-child,
+#prog-coaching-nh.active > .top-tab-content:first-child {
+    border-radius: 8px !important;
+}
+
+/* 11. N&H Coaching 태그 — 코칭 패널 브랜드 색상 */
+#prog-coaching-nh .stag {
+    color: var(--dpurple-deep);
+    border-color: var(--dpurple-deep);
+    background: var(--dpurple-light);
+}
+
+/* 12. ≤768px — 세로 쌓임 방지 + padding → font-size 순 축소 */
+@media (max-width: 768px) {
+
+    /* 상위 탭 바: 가로 강제 유지 */
+    .prog-tabs {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 0 !important;
+    }
+
+    /* 상위 탭 버튼: ① padding 먼저, ② font-size 마지막 */
+    .prog-tab-btn,
+    .prog-tab-btn:first-child,
+    .prog-tab-btn:last-child {
+        border-radius: 8px 8px 0 0 !important;
+        min-width: 0 !important;
+        flex: 1 !important;
+        padding: clamp(0.4rem, 1.4vw, 0.58rem) clamp(0.3rem, 1.5vw, 1.4rem) !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: normal !important;
+    }
+    .prog-tab-btn .tab-title {
+        font-size: clamp(0.82rem, 2.8vw, 1.32rem) !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: normal !important;
+        line-height: 1.25;
+    }
+    .prog-tab-btn .tab-sub {
+        display: none !important;
+    }
+
+    /* 하위 탭 바: 가로 강제 유지 */
+    .prog-panel .sub-prog-selector {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        width: 100%;
+    }
+
+    /* 하위 탭 버튼: ① padding 먼저, ② font-size 마지막 */
+    .prog-panel .sub-card,
+    .prog-panel .sub-card:first-child,
+    .prog-panel .sub-card:last-child {
+        border-radius: 8px 8px 0 0 !important;
+        min-width: 0 !important;
+        flex: 1 !important;
+        padding: clamp(0.4rem, 1.4vw, 0.58rem) clamp(0.3rem, 1.5vw, 1.3rem) !important;
+        overflow: visible !important;
+    }
+    .prog-panel .sub-title {
+        font-size: clamp(0.82rem, 2.8vw, 1.26rem) !important;
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+    /* 항상 표시, 화면 폭에 비례해 축소 */
+    .prog-panel .sub-badge {
+        display: block !important;
+        font-size: clamp(0.72rem, 2.2vw, 0.88rem) !important;
+    }
+
+    /* 상세 제목 상자 — 모바일: 상단 라운딩 제거 */
+    .top-tab-content,
+    #panel-discplus .top-tab-content,
+    #panel-nursing .top-tab-content,
+    #panel-coaching .top-tab-content {
+        border-radius: 0 0 8px 8px !important;
+    }
+
+    /* 서브 디테일 — 모바일: 모두 상단 라운딩 제거 */
+    #prog-disc-basic.active > .prog-hero:first-child,
+    #prog-disc-basic.active > .top-tab-content:first-child,
+    #prog-flourish.active > .prog-hero:first-child,
+    #prog-flourish.active > .top-tab-content:first-child,
+    #prog-coaching-personal.active > .prog-hero:first-child,
+    #prog-coaching-personal.active > .top-tab-content:first-child,
+    #prog-disc-ft.active > .prog-hero:first-child,
+    #prog-disc-ft.active > .top-tab-content:first-child,
+    #prog-code.active > .prog-hero:first-child,
+    #prog-code.active > .top-tab-content:first-child,
+    #prog-legend.active > .prog-hero:first-child,
+    #prog-legend.active > .top-tab-content:first-child,
+    #prog-coaching-nh.active > .prog-hero:first-child,
+    #prog-coaching-nh.active > .top-tab-content:first-child {
+        border-radius: 0 0 8px 8px !important;
+    }
+}
+
+/* 13. ≤480px — 더 좁은 화면: 세로 쌓임 재확인 + font-size 추가 축소
+        badge는 이 폭에서 숨김 (공간 부족) */
+@media (max-width: 480px) {
+
+    .prog-tabs {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+    }
+    .prog-tab-btn,
+    .prog-tab-btn:first-child,
+    .prog-tab-btn:last-child {
+        flex: 1 !important;
+        min-width: 0 !important;
+        padding: clamp(0.32rem, 1.3vw, 0.42rem) clamp(0.2rem, 1.3vw, 0.5rem) !important;
+    }
+    .prog-tab-btn .tab-title {
+        font-size: clamp(0.72rem, 3.4vw, 0.95rem) !important;
+    }
+
+    .prog-panel .sub-prog-selector {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+    }
+    .prog-panel .sub-card,
+    .prog-panel .sub-card:first-child,
+    .prog-panel .sub-card:last-child {
+        flex: 1 !important;
+        min-width: 0 !important;
+        padding: clamp(0.3rem, 1.3vw, 0.42rem) clamp(0.18rem, 1.3vw, 0.5rem) !important;
+    }
+    .prog-panel .sub-title {
+        font-size: clamp(0.72rem, 3.4vw, 0.95rem) !important;
+    }
+    /* 480px 이하에서도 항상 표시, 더 많이 축소 */
+    .prog-panel .sub-badge {
+        display: block !important;
+        font-size: clamp(0.62rem, 2.8vw, 0.75rem) !important;
     }
 }

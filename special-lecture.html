@@ -400,7 +400,12 @@
         }
 
         @media (max-width: 768px) {
-            .lecture-page-header { min-height: 280px; }
+            .lecture-page-header {
+                min-height: 280px;
+                aspect-ratio: auto;
+                background-position: left center;
+                overflow: hidden;
+            }
             .lecture-hero-inner { padding: 2rem 1.3rem; }
             .lecture-page-header h1 { font-size: 42px; }
             .lecture-page-header p { font-size: 24px; }
@@ -421,12 +426,17 @@
                     </a>
                 </h1>
             </div>
+            <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
             <nav>
                 <ul>
                     <li><a href="./index.html">소개</a></li>
                     <li><a href="./coaching-model.html">코칭 모델</a></li>
                     <li><a href="./programs.html">프로그램</a></li>
-                    <li><a href="./special-lecture.html">특강</a></li>
+                    <li><a href="./special-lecture.html" class="active">특강</a></li>
                     <li><a href="./book.html">도서</a></li>
                     <li><a href="./inquiry.html">문의</a></li>
                 </ul>
@@ -614,6 +624,40 @@
                 });
             });
         });
+    </script>
+    <script>
+    /* 햄버거 메뉴 */
+    (function () {
+        var btn = document.querySelector('.menu-toggle');
+        var nav = document.querySelector('header nav');
+        if (!btn || !nav) return;
+        function openMenu() {
+            nav.classList.add('nav-open');
+            btn.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.setAttribute('aria-label', '메뉴 닫기');
+        }
+        function closeMenu() {
+            nav.classList.remove('nav-open');
+            btn.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', '메뉴 열기');
+        }
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            nav.classList.contains('nav-open') ? closeMenu() : openMenu();
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('click', function (e) {
+            if (nav.classList.contains('nav-open') &&
+                !nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMenu();
+        });
+    })();
     </script>
 </body>
 </html>

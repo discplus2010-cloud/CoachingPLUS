@@ -244,6 +244,11 @@
                     </a>
                 </h1>
             </div>
+            <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
             <nav>
                 <ul>
                     <li><a href="./index.html">소개</a></li>
@@ -288,7 +293,7 @@
                             <label class="field-label" for="f-org">
                                 소속 기관 · 직함
                             </label>
-                            <input type="text" id="f-org" name="org" placeholder="○○병원 수간호사">
+                            <input type="text" id="f-org" name="org" placeholder="○○병원 교육전당간호사">
                         </div>
                     </div>
 
@@ -317,6 +322,12 @@
                     <button class="inquiry-submit" type="submit" id="btn-submit">
                         문의하기
                     </button>
+
+                    <p id="send-error-msg" style="display:none; margin-top:0.75rem; padding:14px 16px; border-radius:8px; background:#FCEBEB; color:#A32D2D; font-size:1rem; line-height:1.6;">
+                        전송 중 오류가 발생했습니다. 잠시 후 다시 시도하시거나,
+                        <a href="mailto:discplus2010@naver.com" style="color:#A32D2D; font-weight:700;">discplus2010@naver.com</a>
+                        으로 직접 문의해 주세요.
+                    </p>
 
                     <div class="inquiry-done" id="inquiry-done">
                         <p class="done-title">문의가 접수되었습니다</p>
@@ -451,6 +462,7 @@
                     coachingDetail: ''
                 };
 
+                let sendSuccess = false;
                 try {
                     await fetch(SCRIPT_URL, {
                         method: 'POST',
@@ -458,19 +470,61 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-                } catch (e) {
-                    console.warn('전송 오류:', e);
+                    sendSuccess = true;
+                } catch (err) {
+                    console.warn('전송 오류:', err);
+                    sendSuccess = false;
                 }
 
-                document.querySelector('.inquiry-desc').style.display = 'none';
-                form.querySelectorAll('.field, .field-row, #btn-submit').forEach(el => {
-                    el.style.display = 'none';
-                });
-                doneBox.style.display = 'block';
-
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (sendSuccess) {
+                    document.querySelector('.inquiry-desc').style.display = 'none';
+                    form.querySelectorAll('.field, .field-row, #btn-submit').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    doneBox.style.display = 'block';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    btn.disabled = false;
+                    btn.textContent = '문의하기';
+                    const errMsg = document.getElementById('send-error-msg');
+                    if (errMsg) errMsg.style.display = 'block';
+                }
             });
         })();
+    </script>
+    <script>
+    /* 햄버거 메뉴 */
+    (function () {
+        var btn = document.querySelector('.menu-toggle');
+        var nav = document.querySelector('header nav');
+        if (!btn || !nav) return;
+        function openMenu() {
+            nav.classList.add('nav-open');
+            btn.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.setAttribute('aria-label', '메뉴 닫기');
+        }
+        function closeMenu() {
+            nav.classList.remove('nav-open');
+            btn.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', '메뉴 열기');
+        }
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            nav.classList.contains('nav-open') ? closeMenu() : openMenu();
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('click', function (e) {
+            if (nav.classList.contains('nav-open') &&
+                !nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMenu();
+        });
+    })();
     </script>
 </body>
 </html>

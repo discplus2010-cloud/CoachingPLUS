@@ -22,11 +22,16 @@
                     </a>
                 </h1>
             </div>
+            <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
             <nav>
                 <ul>
                     <li><a href="./index.html">소개</a></li>
                     <li><a href="./coaching-model.html">코칭 모델</a></li>
-                    <li><a href="./programs.html">프로그램</a></li>
+                    <li><a href="./programs.html" class="active">프로그램</a></li>
                     <li><a href="./special-lecture.html">특강</a></li>
                     <li><a href="./book.html">도서</a></li>
                     <li><a href="./inquiry.html">문의</a></li>
@@ -205,8 +210,8 @@
                         <div class="prog-meta">
                             <span class="meta-pill">총 24시간 (8H × 3일)</span>
                             <span class="meta-pill">오프라인/온라인</span>
-                            <span class="meta-pill">93기 이상 운영</span>
-                            <span class="meta-pill">재수강 가능</span>
+                            <span class="meta-pill">94기 이상 운영</span>
+                            <span class="meta-pill">재수강 추천</span>
                         </div>
                     </div>
 
@@ -584,54 +589,89 @@
     </footer>
 
     <script>
-        const tabButtons = document.querySelectorAll('.prog-tab-btn');
-        const panels = document.querySelectorAll('.prog-panel');
-        const programCta = document.getElementById('program-cta');
+    (function () {
+        var programCta = document.getElementById('program-cta');
 
-        function activateFirstSub(panel) {
-            const firstCard = panel.querySelector('.sub-card');
-            panel.querySelectorAll('.sub-card').forEach((card) => card.classList.remove('active'));
-            panel.querySelectorAll('.sub-detail').forEach((detail) => detail.classList.remove('active'));
-
-            if (!firstCard) return;
-
-            firstCard.classList.add('active');
-            const targetEl = document.getElementById('prog-' + firstCard.dataset.subProgram);
-            if (targetEl) targetEl.classList.add('active');
+        /* 공통 탭 전환: allTabs/allContents 전체 비활성 → activeTab/activeContent 활성 */
+        function switchTab(allTabs, allContents, activeTab, activeContent) {
+            allTabs.forEach(function (t) { t.classList.remove('active'); });
+            allContents.forEach(function (c) { c.classList.remove('active'); });
+            activeTab.classList.add('active');
+            if (activeContent) activeContent.classList.add('active');
+            if (programCta) programCta.hidden = false;
         }
 
-        tabButtons.forEach((button) => {
-            button.addEventListener('click', () => {
-                const panelId = `panel-${button.dataset.panel}`;
+        /* 하위 탭 초기화: 패널 내 첫 번째 sub-card 활성 */
+        function initSubTabs(panel) {
+            var subCards   = panel.querySelectorAll('.sub-card');
+            var subDetails = panel.querySelectorAll('.sub-detail');
+            subCards.forEach(function (c) { c.classList.remove('active'); });
+            subDetails.forEach(function (d) { d.classList.remove('active'); });
+            if (subCards[0]) {
+                var first = subCards[0];
+                first.classList.add('active');
+                var target = document.getElementById('prog-' + first.dataset.subProgram);
+                if (target) target.classList.add('active');
+            }
+        }
 
-                tabButtons.forEach((item) => item.classList.remove('active'));
-                panels.forEach((panel) => panel.classList.remove('active'));
-
-                button.classList.add('active');
-                const targetPanel = document.getElementById(panelId);
-                targetPanel.classList.add('active');
-                activateFirstSub(targetPanel);
-                if (programCta) programCta.hidden = false;
+        /* ── 상위 탭 ── */
+        var topTabs   = document.querySelectorAll('.prog-tab-btn');
+        var topPanels = document.querySelectorAll('.prog-panel');
+        topTabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                var panel = document.getElementById('panel-' + tab.dataset.panel);
+                switchTab(topTabs, topPanels, tab, panel);
+                if (panel) initSubTabs(panel);
             });
         });
 
-        const subCards = document.querySelectorAll('.sub-prog-selector .sub-card');
-
-        subCards.forEach((card) => {
-            card.addEventListener('click', () => {
-                const selector = card.closest('.sub-prog-selector');
-                const panel = card.closest('.prog-panel');
-
-                selector.querySelectorAll('.sub-card').forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-
-                const target = card.dataset.subProgram;
-                panel.querySelectorAll('.sub-detail').forEach(d => d.classList.remove('active'));
-                const targetEl = document.getElementById('prog-' + target);
-                if (targetEl) targetEl.classList.add('active');
-                if (programCta) programCta.hidden = false;
+        /* ── 하위 탭 (패널마다 독립 등록) ── */
+        topPanels.forEach(function (panel) {
+            var subCards   = panel.querySelectorAll('.sub-card');
+            var subDetails = panel.querySelectorAll('.sub-detail');
+            subCards.forEach(function (card) {
+                card.addEventListener('click', function () {
+                    var target = document.getElementById('prog-' + card.dataset.subProgram);
+                    switchTab(subCards, subDetails, card, target);
+                });
             });
         });
+    })();
+    </script>
+    <script>
+    /* 햄버거 메뉴 */
+    (function () {
+        var btn = document.querySelector('.menu-toggle');
+        var nav = document.querySelector('header nav');
+        if (!btn || !nav) return;
+        function openMenu() {
+            nav.classList.add('nav-open');
+            btn.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.setAttribute('aria-label', '메뉴 닫기');
+        }
+        function closeMenu() {
+            nav.classList.remove('nav-open');
+            btn.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', '메뉴 열기');
+        }
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            nav.classList.contains('nav-open') ? closeMenu() : openMenu();
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('click', function (e) {
+            if (nav.classList.contains('nav-open') &&
+                !nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMenu();
+        });
+    })();
     </script>
 </body>
 </html>
