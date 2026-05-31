@@ -24,7 +24,7 @@ function doPost(e) {
         const memo  = String(data.memo || '').trim();
 
         const emailOk = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(email);
-        const telOk = /^[0-9-]+$/.test(tel) && tel.replace(/\D/g, '').length >= 8;
+        const telOk = /^[0-9-]+$/.test(tel);
 
         if (!name || !memo) {
             return ContentService
