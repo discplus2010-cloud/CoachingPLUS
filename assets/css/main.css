@@ -2242,7 +2242,7 @@ a.course-tag:hover {
     --home-link-bg: linear-gradient(90deg, var(--dpurple-deep) 0%, var(--dpurple-deep) 100%);
     --home-link-color: var(--text-white);
     --home-link-border: var(--dpurple-core);
-    --home-link-image: url('../images/special-lecture_hero.png');
+    --home-link-image: url('../images/lectures_hero.png');
     --home-link-image-position: right 36%;
     --home-link-image-gradient: linear-gradient(
         90deg,
