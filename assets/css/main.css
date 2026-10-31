@@ -1715,6 +1715,10 @@ a.course-tag:hover {
     margin-bottom: 14px;
 }
 
+.book-content .book-title-prefix {
+    font-size: 0.85em;
+}
+
 .book-subtitle {
     font-size: 1.34rem;
     font-weight: 700;
@@ -1727,6 +1731,10 @@ a.course-tag:hover {
     color: var(--text-body);
     line-height: 1.8;
     margin-top: 0;
+}
+
+.book-content p + p {
+    margin-top: 0.5em;
 }
 
 .book-tags {
@@ -1748,6 +1756,7 @@ a.course-tag:hover {
 
 .book-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     align-items: center;
     margin-top: 26px;
@@ -1762,6 +1771,7 @@ a.course-tag:hover {
     font-size: 15px;
     border-radius: 20px;
     border: 1px solid transparent;
+    white-space: nowrap;
 }
 
 .book-actions .btn-primary {
@@ -1783,6 +1793,19 @@ a.course-tag:hover {
 .book-actions .btn-aladin:hover {
     background-color: #f21c8c;
     border-color: #d4107a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-actions .btn-kyobo {
+    background-color: #40a131;
+    color: var(--text-white);
+    border-color: #388d2b;
+}
+
+.book-actions .btn-kyobo:hover {
+    background-color: #46b036;
+    border-color: #40a131;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
