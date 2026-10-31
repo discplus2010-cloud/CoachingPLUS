@@ -1,5 +1,5 @@
 const SHEET_NAME  = 'raw';
-const ADMIN_EMAIL = 'discplus2010@naver.com';
+const ADMIN_EMAIL = 'discplus2010@naver.com,spichpro@naver.com';
 const HEADER = [
     '문의번호', '문의일시',
     '성함', '소속/직함', '이메일', '전화번호',
