@@ -288,13 +288,13 @@
                             <label class="field-label" for="f-name">
                                 성함 <span class="req">*</span>
                             </label>
-                            <input type="text" id="f-name" name="name" placeholder="홍길동" autocomplete="name" required>
+                            <input type="text" id="f-name" name="name" placeholder="" autocomplete="name" required>
                         </div>
                         <div class="field">
                             <label class="field-label" for="f-org">
                                 소속 기관 · 직함
                             </label>
-                            <input type="text" id="f-org" name="org" placeholder="○○병원 교육전당간호사">
+                            <input type="text" id="f-org" name="org" placeholder="○○병원 ○○병동 수간호사">
                         </div>
                     </div>
 
@@ -365,7 +365,7 @@
             const btn = document.getElementById('btn-submit');
             const doneBox = document.getElementById('inquiry-done');
             const requiredFields = [
-                { id: 'f-name', label: '성함', requiredText: '성함은 필수 항목입니다.', placeholder: '홍길동' },
+                { id: 'f-name', label: '성함', requiredText: '성함은 필수 항목입니다.', placeholder: '김○○' },
                 {
                     id: 'f-email',
                     label: '이메일 주소',
